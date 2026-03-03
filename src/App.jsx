@@ -11,7 +11,7 @@ const Navbar = () => (
   <nav className="flex items-center justify-between px-8 py-6 bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
     <div className="flex items-center gap-3">
       <img src="/favicon.PNG" alt="Uli Logo" className="w-10 h-10 object-contain rounded-full" />
-      <span className="text-xl font-bold tracking-tight text-primary">Uli SDK</span>
+      <span className="text-xl font-bold tracking-tight text-primary">Uli SDK - Open Vision Technology, LLC.</span>
     </div>
     <div className="hidden md:flex gap-8 text-sm font-medium text-gray-600">
       <a href="#hero" className="hover:text-secondary transition">^</a>
