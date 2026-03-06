@@ -5,23 +5,37 @@ const ContactSection = () => {
   const [formState, setFormState] = useState('idle');
   const [requestSdk, setRequestSdk] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormState('loading');
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    const subject = encodeURIComponent("OVT Contact Form Submission from " + data.fullName);
-    let bodyText = `Name: ${data.fullName}\nEmail: ${data.email}\nEntity Type: ${data.entityType}\n`;
-    if (requestSdk && data.github) {
-      bodyText += `GitHub: ${data.github}\n`;
+    // Include the SDK request state in our JSON payload
+    data.requestSdk = requestSdk;
+
+    try {
+      // TODO: Replace with your actual Google Apps Script Web App URL
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbxwFSQWjR1IkNVtQNfFTWgf_kAc_Tgq4VLy-1eJbaVeNBRjUdZBb_y5fNf-7TH5Y-YUMg/exec';
+
+      await fetch(scriptUrl, {
+        method: 'POST',
+        // 'no-cors' prevents CORS issues when calling Google Apps Script from a frontend
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(data),
+      });
+
+      // Using setTimeout just to show the loading animation for a slight UX improvement
+      setTimeout(() => setFormState('success'), 800);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setFormState('idle');
+      alert('Failed to submit form. Please try again.');
     }
-    bodyText += `\nMessage:\n${data.message}`;
-
-    window.location.href = `mailto:genshianglin@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
-
-    setTimeout(() => setFormState('success'), 1500);
   };
 
   return (
@@ -89,8 +103,21 @@ const ContactSection = () => {
 
               <textarea name="message" required className="w-full bg-white border border-gray-300 p-3 rounded-lg text-primary outline-none focus:border-secondary transition shadow-sm" rows="3" placeholder="Primary use case or mission requirements..."></textarea>
 
-              <button className="w-full py-4 bg-accent text-white rounded-xl font-bold hover:opacity-90 transition cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(242,148,98,0.4)]">
-                {requestSdk ? 'Submit Access Application' : 'Send Message'}
+              <button
+                disabled={formState === 'loading'}
+                className="w-full py-4 bg-accent text-white rounded-xl font-bold hover:opacity-90 transition cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(242,148,98,0.4)] disabled:opacity-75 disabled:cursor-not-allowed"
+              >
+                {formState === 'loading' ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Submitting...
+                  </>
+                ) : (
+                  requestSdk ? 'Submit Access Application' : 'Send Message'
+                )}
               </button>
             </form>
           )}
