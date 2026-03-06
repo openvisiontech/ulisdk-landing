@@ -15,7 +15,7 @@ const ArchitectureSection = () => {
                             <div className="absolute -inset-4 bg-secondary/10 blur-3xl rounded-full opacity-50" />
                             <div className="relative rounded-3xl border border-gray-200 bg-white p-4 shadow-2xl flex justify-center items-center overflow-hidden">
                                 <img
-                                    src="/overall-1.svg"
+                                    src="/Architecture.svg"
                                     alt="Uli SDK Architecture"
                                     className="w-full h-auto rounded-2xl object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                                 />
