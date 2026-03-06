@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Cpu, Search, Zap, ChevronRight, Mail, FileText, X, Download, Network, Shield, AlertTriangle, Activity } from 'lucide-react';
+import { Bot, Cpu, Search, Zap, ChevronRight, Mail, FileText, X, Download, Network, Shield, AlertTriangle, Activity, Eye, ArrowLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import ArchitectureSection from './ArchitectureSection';
 import HighlightsSection from './HighlightsSection';
@@ -33,10 +33,31 @@ const Navbar = () => (
 
 const Hero = () => {
   const [showCoverPage, setShowCoverPage] = React.useState(false);
+  const [viewingDoc, setViewingDoc] = React.useState(null);
+  const [docContent, setDocContent] = React.useState('');
+
+  const handleViewDoc = async (docName) => {
+    try {
+      const response = await fetch(`/${docName}`);
+      const text = await response.text();
+      setDocContent(text);
+      setViewingDoc(docName);
+    } catch (error) {
+      console.error('Error loading document:', error);
+      setDocContent('Error loading document content.');
+      setViewingDoc(docName);
+    }
+  };
+
+  const closeModals = () => {
+    setShowCoverPage(false);
+    setViewingDoc(null);
+    setDocContent('');
+  };
 
   // Prevent scrolling when modal is open
   React.useEffect(() => {
-    if (showCoverPage) {
+    if (showCoverPage || viewingDoc) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -44,7 +65,7 @@ const Hero = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [showCoverPage]);
+  }, [showCoverPage, viewingDoc]);
 
   return (
     <section id="hero" className="relative pt-20 pb-32 overflow-hidden bg-primary">
@@ -79,14 +100,14 @@ const Hero = () => {
           </a>
           <button
             onClick={() => setShowCoverPage(true)}
-            className="px-8 py-4 bg-white/10 text-white rounded-xl font-bold border border-white/20 hover:bg-white/20 transition cursor-pointer">
-            <Download size={18} /> Download Technical Documents
+            className="px-8 py-4 bg-white/10 text-white rounded-xl font-bold border border-white/20 hover:bg-white/20 transition cursor-pointer flex items-center gap-2">
+            <FileText size={18} /> View Tech Docs
           </button>
         </div>
       </div>
 
-      {showCoverPage && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 backdrop-blur-sm p-4 md:p-8" onClick={() => setShowCoverPage(false)}>
+      {showCoverPage && !viewingDoc && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 backdrop-blur-sm p-4 md:p-8" onClick={closeModals}>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -95,11 +116,11 @@ const Hero = () => {
           >
             <div className="flex justify-between items-center mb-6">
               <div className="flex items-center gap-2 text-primary">
-                <Download size={24} className="text-secondary" />
-                <h3 className="text-xl font-bold">Download Documents</h3>
+                <FileText size={24} className="text-secondary" />
+                <h3 className="text-xl font-bold">Technical Documents</h3>
               </div>
               <button
-                onClick={() => setShowCoverPage(false)}
+                onClick={closeModals}
                 className="text-gray-500 hover:text-primary transition p-2 hover:bg-gray-100 rounded-full"
                 aria-label="Close"
               >
@@ -108,28 +129,7 @@ const Hero = () => {
             </div>
 
             <div className="space-y-4">
-              <a
-                href="/cover_page.pdf"
-                download
-                className="flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-secondary/50 hover:bg-secondary/5 transition group"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/5 rounded-lg text-primary group-hover:bg-secondary/10 group-hover:text-secondary transition">
-                    <FileText size={20} />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="font-bold text-primary">Cover Page</h4>
-                    <p className="text-xs text-gray-500">Uli SDK Overview</p>
-                  </div>
-                </div>
-                <Download size={18} className="text-gray-400 group-hover:text-secondary transition" />
-              </a>
-
-              <a
-                href="/introduction.pdf"
-                download
-                className="flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-secondary/50 hover:bg-secondary/5 transition group"
-              >
+              <div className="flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-secondary/50 hover:bg-secondary/5 transition group">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-primary/5 rounded-lg text-primary group-hover:bg-secondary/10 group-hover:text-secondary transition">
                     <FileText size={20} />
@@ -139,8 +139,102 @@ const Hero = () => {
                     <p className="text-xs text-gray-500">Technical Details</p>
                   </div>
                 </div>
-                <Download size={18} className="text-gray-400 group-hover:text-secondary transition" />
-              </a>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleViewDoc('introduction.md')}
+                    className="p-2 text-gray-400 hover:text-primary hover:bg-primary/5 rounded-lg transition"
+                    title="View Markdown"
+                  >
+                    <Eye size={18} />
+                  </button>
+                  <a
+                    href="/introduction.pdf"
+                    download
+                    className="p-2 text-gray-400 hover:text-secondary hover:bg-secondary/5 rounded-lg transition"
+                    title="Download PDF"
+                  >
+                    <Download size={18} />
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-secondary/50 hover:bg-secondary/5 transition group">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/5 rounded-lg text-primary group-hover:bg-secondary/10 group-hover:text-secondary transition">
+                    <FileText size={20} />
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-bold text-primary">Security, Safety, and Reliability</h4>
+                    <p className="text-xs text-gray-500">Technical Details</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleViewDoc('security_safety_reliability.md')}
+                    className="p-2 text-gray-400 hover:text-primary hover:bg-primary/5 rounded-lg transition"
+                    title="View Markdown"
+                  >
+                    <Eye size={18} />
+                  </button>
+                  <a
+                    href="/security_safety_reliability.pdf"
+                    download
+                    className="p-2 text-gray-400 hover:text-secondary hover:bg-secondary/5 rounded-lg transition"
+                    title="Download PDF"
+                  >
+                    <Download size={18} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {viewingDoc && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 backdrop-blur-sm p-4 md:p-8" onClick={closeModals}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-2xl overflow-hidden border border-gray-200 flex flex-col shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex justify-between items-center z-10">
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => setViewingDoc(null)}
+                  className="flex items-center gap-2 text-gray-500 hover:text-primary transition font-medium"
+                >
+                  <ArrowLeft size={18} />
+                  Back
+                </button>
+                <div className="h-6 w-px bg-gray-200"></div>
+                <h3 className="text-xl font-bold text-primary">
+                  {viewingDoc === 'introduction.md' ? 'Introduction' : 'Security, Safety, and Reliability'}
+                </h3>
+              </div>
+              <div className="flex items-center gap-4">
+                <a
+                  href={`/${viewingDoc.replace('.md', '.pdf')}`}
+                  download
+                  className="flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary rounded-lg font-medium hover:bg-secondary/20 transition"
+                >
+                  <Download size={18} />
+                  <span className="hidden sm:inline">Download PDF</span>
+                </a>
+                <button
+                  onClick={closeModals}
+                  className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6 md:p-10 bg-gray-50">
+              <div className="max-w-3xl mx-auto prose prose-slate md:prose-lg lg:prose-xl prose-headings:text-primary prose-a:text-secondary hover:prose-a:text-secondary/80">
+                <ReactMarkdown>{docContent}</ReactMarkdown>
+              </div>
             </div>
           </motion.div>
         </div>
