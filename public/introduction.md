@@ -1,20 +1,17 @@
-
-
 **Uli (Unified Link Interface) SDK** is the robotic nervous system for Agentic AI. It is a high-performance middleware designed to bridge the gap between traditional infrastructures and modern Agentic AI ecosystems. By leveraging the discovery services, Uli SDK enables physical assets to expose their functional capabilities and telemetry as discoverable “context” and “tools” for Language Models.
 
 At the core of the Uli SDK's architecture is a **dynamic**, **self-configuring** infrastructure. This allows functional modules to be discovered, integrated, and utilized at runtime through a set of unified interfaces, eliminating the need for static, pre-configured connections and enabling true system agility.
 
 This powerful infrastructure extends beyond individual modules to connect disparate systems—including **drones**, **autonomous vehicles**, **robot arms**, **process tools**, **controllers**, **AI agents**, and **data viewers/loggers**—that have been integrated using the Uli SDK. The same unified interfaces are leveraged to allow for the dynamic discovery of these complete systems and their functional capabilities and telemetry. This architectural approach is what facilitates true interoperability, enabling seamless collaboration between assets across multiple operational domains.  
-
+		
 ![Alt text for screen readers](ConnectedAssets.svg "Multi-domain asset connectivity")
-
 
 To accelerate development and ensure mission-readiness, Uli SDK provides a comprehensive suite of production-ready functional modules. This includes foundational pillars for the **Infrastructure**, **Security**, **Safety**, and **Reliability**, which handle the most critical, non-negotiable aspects of robotic systems. In addition, the SDK offers application-level modules for **Operator Control**, **Data Viewing** and **Logging**, and **Agentic AI**, which can learn and act based on the context of the functional capabilities and telemetry exposed by the assets connected to the infrastructure.
 
 The primary benefit of this modular, pre-built approach is that it empowers robotics developers to focus exclusively on their unique, value-adding logic—the core functional modules that differentiate their product. By providing a robust, pre-validated solution for the complex, non-differentiating aspects of development, the Uli SDK significantly shortens the **development lifecycle**, reduces **project risk**, and accelerates **time-to-market**.
 
 Here is the high-level view of the Uli SDK architecture:  
-	
+
 ![Alt text for screen readers](Architecture.svg "Uli SDK Architecture")
 
 By adhering to the Department of Defense (DoD) **Modular Open Systems Approach** (**MOSA**), the Uli SDK leverages these unified interfaces in concert with dynamic functional modules. This architecture is the foundation for seamless interoperability, enabling the rapid addition, removal, or reconfiguration of capabilities in response to evolving mission requirements. The result is a highly agile and adaptable system that is built for change.
@@ -30,7 +27,7 @@ Reliability in the Uli SDK is architected around a hierarchical state management
 ### **Infrastructure**
 
 The Uli SDK infrastructure organizes all computing resources into a clear hierarchical structure of subsystems, nodes, and components. A subsystem serves as a logical grouping of one or more nodes, where each node represents a physical or virtual computing device. In turn, each node hosts the components (applications) that provide services. All communication between these services is conducted through a robust, message-based interaction model.  
-	
+
 ![Alt text for screen readers](Infrastructure.svg "Infrastructure")
 
 To facilitate seamless communication, every entity within this hierarchy—subsystems, nodes, and components—is assigned a unique identifier. Messages are then addressed using a tuple in the format (Subsystem ID, Node ID, Comp ID), which precisely specifies both the source and destination. This ID assignment is performed dynamically, analogous to a DHCP server assigning IP addresses. The SDK’s Id Allocator service issues unique IDs to subsystems, and once a subsystem is registered, its internal Subsystem Manager service allocates unique IDs to the nodes within its domain.
@@ -52,7 +49,7 @@ To ensure system-wide discoverability and observability, every component is requ
 
 ### 
 
-### **Agents**
+  ### **Agents**
 
 Agents are the primary components for executing mission-critical tasks and exercising direct control over system capabilities. The Uli SDK provides a unified interface for the entire agent lifecycle, encompassing discovery, configuration, execution, and real-time status monitoring. Utilizing the subsystem's **Agent Discovery** service, clients can dynamically query an agent's capabilities, current configuration, and operational status, as well as request exclusive control to perform specific tasks.
 
@@ -69,7 +66,7 @@ The unified workflow for accessing and controlling agents is outlined below.
 5) The client controls the agent to run, pause, and cancel.  
 6) The client queries the status of the agent.
 
-### **Data Topics**
+   ### **Data Topics**
 
 Data Topics are the primary mechanism for categorizing and disseminating real-time data throughout the Uli SDK, operating on a robust publish-subscribe model. The Data Topic services act as publishers, publishing data topics, while clients subscribe to specific topics to receive data streams.
 
@@ -84,15 +81,21 @@ The unified workflow for discovering and accessing Data Topics is detailed below
 3) The client subscribes to data topics of interest.  
 4) The client receives the data topic streams.
 
-**Skills-Based Autonomous Middleware**
+**Contextual Knowledge Graph**
 
-Uli SDK serves as a first-in-class implementation of **Agent Skills** for robotics. It acts as the intelligent bridge between an AI’s cognitive reasoning and a robotic system’s physical capabilities. By utilizing a Unified Link Interface, the SDK enables assets to export high-fidelity context—including asset identity, functional agent skills, and telemetry data topics—formatted in semantically-rich markdown. This architecture enhances situational awareness by providing AI agents with the precise environmental and operational context needed for reasoning, while delivering discoverable, executable skills that allow agents to act autonomously upon their decisions.
+The Uli SDK acts as the intelligent bridge between an AI’s cognitive reasoning and a robotic system’s physical capabilities. By utilizing the discovery services, the SDK enables assets to export high-fidelity context—including asset context, capability context, and telemetry context—formatted in semantically-rich markdown–serves as the foundational schema for a Live **Knowledge Graph-driven Context Layer** that represents the entire robotic fleet. AI agents can then perform **semantic retrieval** to ground their decision-making in the following processes:
 
-The Uli SDK ensures zero-friction integration with the world's leading LLMs and AI frameworks. The AI agent queries the Uli SDK to discover assets and, based on the provided context, autonomously decides whether to subscribe to or snapshot specific telemetry via Uli SDK data topics. When a mission requirement arises, the AI agent can dynamically configure and execute the discovered capabilities via Uli SDK agents to act upon its cognitive decisions. This entire lifecycle is protected by a robust **certificate-based authentication and authorization model**, enforcing strict permissions for both data and control access to maintain operational integrity in mission-critical environments.
+* **Reasoning**: AI agents query the knowledge graph to identify assets with the appropriate **Data Access Privileges** and **Control Availability** for a specific mission.
 
-### **A2UI (Agent-to-UI) Framework**
 
-### 
+* **Execution**: From the graph, agents retrieve the exact **Capability Context** required to generate precise configurations and control parameters for the hardware, ensuring mission execution is grounded in high-fidelity system knowledge.
+
+
+* **State Estimation**: AI agents utilize the **Telemetry Context** and subscribed data topics to perform high-level state estimation. By reasoning over the semantics of the live data stream, the agent maintains an accurate world model of the assets’ physical status, environmental interfaces, and operational health within the Knowledge Graph.
+
+  ### **A2UI (Agent-to-UI) Framework**
+
+  ### 
 
 By leveraging native **Dart-FFI integration**, the Uli SDK enables AI agents to drive real-time, high-fidelity user interfaces directly from telemetry streams. The embedded context specifically identifies the appropriate **Flutter UI Widgets** for displaying complex media or 3D contents, as well as the necessary interfaces for users to input agent configurations and control parameters. This seamless bridge between the backend C++ core and the Dart-Flutter framework allows the AI to manage the entire user experience—from displaying status updates to rendering interactive controls—ensuring that situational awareness is maintained for both the AI agent and the human operator.  
  
@@ -174,14 +177,14 @@ For the building process, the Uli SDK utilizes Google’s highly efficient build
 
 14. **Cross-build support** for x86\_64, NVIDIA Jetson Nano, Xavier, and Orin, as well as multiple Ubuntu versions (18.04 \- 24.04, Jetpack 4.6, 5.1, 6.2).
 
-### **Advantages**
+    ### **Advantages**
 
 Uli SDK is engineered to deliver a decisive edge in adaptability, interoperability, and operational integrity. Its architecture provides the following key advantages:
 
-* **Agent Skills-based Middleware**
+* **Knowledge Graph-driven Context Layer**
 
 
-Implementation of the Agent Skills for robotics, ensuring zero-friction integration with the language models and agentic AI frameworks.
+Synthesis of the discovered Asset Context, Capability Context, and Telemetry Context into Knowledge Graph for semantic retrieval.
 
 * **Self-Configuring and Adaptable Infrastructure**
 

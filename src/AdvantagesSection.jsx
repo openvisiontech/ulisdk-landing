@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Settings, Search, ShieldCheck, HeartPulse, Activity, Award, CircleDollarSign } from 'lucide-react';
+import { Waypoints, Settings, Search, ShieldCheck, HeartPulse, Activity, Award, CircleDollarSign } from 'lucide-react';
 
 const advantagesData = [
     {
-        title: "Agent Skills-based Middleware",
-        desc: "Implementation of the Agent Skills for robotics, ensuring zero-friction integration with the language models and agentic AI frameworks.",
-        icon: <Bot className="text-secondary w-6 h-6" />
+        title: "Knowledge Graph-driven Context Layer",
+        desc: "Synthesis of the discovered Asset Context, Capability Context, and Telemetry Context into Knowledge Graph for semantic retrieval.",
+        icon: <Waypoints className="text-secondary w-6 h-6" />
     },
     {
         title: "Self-Configuring & Adaptable Infrastructure",

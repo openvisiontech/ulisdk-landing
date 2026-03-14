@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Cpu, Search, Zap, ChevronRight, Mail, FileText, X, Download, Network, Shield, AlertTriangle, Activity, Eye, ArrowLeft } from 'lucide-react';
+import { Waypoints, Cpu, Zap, ChevronRight, FileText, X, Download, Network, Shield, AlertTriangle, Activity, Eye, ArrowLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import ArchitectureSection from './ArchitectureSection';
 import HighlightsSection from './HighlightsSection';
@@ -77,7 +77,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-semibold mb-6"
         >
-          <Zap size={14} /> CONTEXT & SKILLS
+          <Waypoints size={14} /> CONTEXT
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -89,7 +89,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
           className="text-xl text-gray-300 max-w-2xl mx-auto mb-10"
         >
-          Uli (Unified Link Interface) SDK is a high-performance middleware designed to bridge the gap between traditional infrastructures and modern Agentic AI ecosystems. By leveraging the discovery services, Uli SDK enables physical assets to export their functional capabilities and telemetry as discoverable "context" and "tools" for Language Models.
+          Uli (Unified Link Interface) SDK is designed to bridge the gap between traditional infrastructures of robotic assets and modern Agentic AI ecosystems.
         </motion.p>
         <div className="flex flex-wrap justify-center gap-4">
           <a
@@ -248,7 +248,7 @@ const Features = () => (
     <div className="max-w-7xl mx-auto px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {[
         { title: "Agile and Adaptable", desc: "Leveraging its DoD MOSA-compliant design with unified interfaces and dynamic modules, Uli SDK enables the seamless interoperability and rapid reconfiguration of capabilities, resulting in a highly agile system built for change.", icon: <Zap className="text-secondary" /> },
-        { title: "The Discovery Engine for Robotic Context", desc: "Uli SDK is designed to enable the dynamic Discovery of Robotic Asset Context, including physical identity and security governance, the Context of Functional Capabilities, and high-fidelity Telemetry Context. By utilizing the Unified Link Interface, it transforms complex robotic hardware into a self-describing ecosystem, providing AI agents with the foundational context required for situational reasoning and autonomous command execution.", icon: <Bot className="text-secondary" /> },
+        { title: "Contextual Knowledge Graph", desc: "Uli SDK enables assets to export contextual information, which is then synthesized into a Knowledge Graph for semantic retrieval.", icon: <Waypoints className="text-secondary" /> },
         { title: "A2UI (Agent-to-UI) Framework", desc: "Uli SDK features native Dart-FFI integration, creating a powerful A2UI framework. This enables AI agents to drive real-time, high-fidelity user interfaces directly from telemetry streams.", icon: <Cpu className="text-secondary" /> },
         { title: "Security", desc: "Uli SDK's security model uses certificate-based authentication and requires clients to make separate requests to gain explicit permissions for both data access (telemetry) and control access (functional capabilities).", icon: <Shield className="text-secondary" /> },
         { title: "Safety", desc: "Uli SDK's safety approach combines proactive detection with decisive handling through a redundant triggering system, which automatically responds to application errors and manual e-stop commands by transitioning the entire system into a coordinated emergency state.", icon: <AlertTriangle className="text-secondary" /> },
