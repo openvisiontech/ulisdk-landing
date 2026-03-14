@@ -89,7 +89,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
           className="text-xl text-gray-300 max-w-2xl mx-auto mb-10"
         >
-          Uli (Unified Link Interface) SDK is a high-performance middleware designed to bridge the gap between traditional infrastructures and modern Agentic AI ecosystems. By leveraging the discovery services, Uli SDK enables physical assets to expose their functional capabilities and telemetry as discoverable "context" and "tools" for Language Models.
+          Uli (Unified Link Interface) SDK is a high-performance middleware designed to bridge the gap between traditional infrastructures and modern Agentic AI ecosystems. By leveraging the discovery services, Uli SDK enables physical assets to export their functional capabilities and telemetry as discoverable "context" and "tools" for Language Models.
         </motion.p>
         <div className="flex flex-wrap justify-center gap-4">
           <a
@@ -248,7 +248,7 @@ const Features = () => (
     <div className="max-w-7xl mx-auto px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {[
         { title: "Agile and Adaptable", desc: "Leveraging its DoD MOSA-compliant design with unified interfaces and dynamic modules, Uli SDK enables the seamless interoperability and rapid reconfiguration of capabilities, resulting in a highly agile system built for change.", icon: <Zap className="text-secondary" /> },
-        { title: "Agent skills-based Middleware", desc: "Uli SDK serves as an implementation of Agent Skills for robotics. It acts as the bridge between an AI's cognitive processes and a robotic system's capabilities, enhancing situational awareness by feeding AI agents with the context of the robotic systems for reasoning and providing executable functional capabilities to act upon AI agents' decisions.", icon: <Bot className="text-secondary" /> },
+        { title: "The Discovery Engine for Robotic Context", desc: "Uli SDK is designed to enable the dynamic Discovery of Robotic Asset Context, including physical identity and security governance, the Context of Functional Capabilities, and high-fidelity Telemetry Context. By utilizing the Unified Link Interface, it transforms complex robotic hardware into a self-describing ecosystem, providing AI agents with the foundational context required for situational reasoning and autonomous command execution.", icon: <Bot className="text-secondary" /> },
         { title: "A2UI (Agent-to-UI) Framework", desc: "Uli SDK features native Dart-FFI integration, creating a powerful A2UI framework. This enables AI agents to drive real-time, high-fidelity user interfaces directly from telemetry streams.", icon: <Cpu className="text-secondary" /> },
         { title: "Security", desc: "Uli SDK's security model uses certificate-based authentication and requires clients to make separate requests to gain explicit permissions for both data access (telemetry) and control access (functional capabilities).", icon: <Shield className="text-secondary" /> },
         { title: "Safety", desc: "Uli SDK's safety approach combines proactive detection with decisive handling through a redundant triggering system, which automatically responds to application errors and manual e-stop commands by transitioning the entire system into a coordinated emergency state.", icon: <AlertTriangle className="text-secondary" /> },
