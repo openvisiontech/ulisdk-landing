@@ -89,7 +89,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
           className="text-xl text-gray-300 max-w-2xl mx-auto mb-10"
         >
-          Uli (Unified Link Interface) SDK is designed to bridge the gap between traditional infrastructures of robotic assets and modern Agentic AI ecosystems.
+          The Uli (Unified Link Interface) SDK is designed to bridge the gap between traditional infrastructures of robotic assets and modern Agentic AI ecosystems.
         </motion.p>
         <div className="flex flex-wrap justify-center gap-4">
           <a
