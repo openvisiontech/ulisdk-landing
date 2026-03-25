@@ -1,9 +1,11 @@
+
+
 **Uli (Unified Link Interface) SDK** is the robotic nervous system for Agentic AI. It is a high-performance middleware designed to bridge the gap between traditional infrastructures and modern Agentic AI ecosystems. By leveraging the discovery services, Uli SDK enables physical assets to expose their functional capabilities and telemetry as discoverable “context” and “tools” for Language Models.
 
 At the core of the Uli SDK's architecture is a **dynamic**, **self-configuring** infrastructure. This allows functional modules to be discovered, integrated, and utilized at runtime through a set of unified interfaces, eliminating the need for static, pre-configured connections and enabling true system agility.
 
 This powerful infrastructure extends beyond individual modules to connect disparate systems—including **drones**, **autonomous vehicles**, **robot arms**, **process tools**, **controllers**, **AI agents**, and **data viewers/loggers**—that have been integrated using the Uli SDK. The same unified interfaces are leveraged to allow for the dynamic discovery of these complete systems and their functional capabilities and telemetry. This architectural approach is what facilitates true interoperability, enabling seamless collaboration between assets across multiple operational domains.  
-		
+
 ![Alt text for screen readers](ConnectedAssets.svg "Multi-domain asset connectivity")
 
 To accelerate development and ensure mission-readiness, Uli SDK provides a comprehensive suite of production-ready functional modules. This includes foundational pillars for the **Infrastructure**, **Security**, **Safety**, and **Reliability**, which handle the most critical, non-negotiable aspects of robotic systems. In addition, the SDK offers application-level modules for **Operator Control**, **Data Viewing** and **Logging**, and **Agentic AI**, which can learn and act based on the context of the functional capabilities and telemetry exposed by the assets connected to the infrastructure.
@@ -26,7 +28,7 @@ Reliability in the Uli SDK is architected around a hierarchical state management
 
 ### **Infrastructure**
 
-The Uli SDK infrastructure organizes all computing resources into a clear hierarchical structure of subsystems, nodes, and components. A subsystem serves as a logical grouping of one or more nodes, where each node represents a physical or virtual computing device. In turn, each node hosts the components (applications) that provide services. All communication between these services is conducted through a robust, message-based interaction model.  
+The Uli SDK infrastructure organizes all computing resources into a clear hierarchical structure of subsystems, nodes, and components. A subsystem serves as a logical grouping of one or more nodes, where each node represents a physical or virtual computing device. In turn, each node hosts the components (applications) that provide services. All communication between these services is conducted through a robust, message-based interaction model. 
 
 ![Alt text for screen readers](Infrastructure.svg "Infrastructure")
 
@@ -149,70 +151,78 @@ For the building process, the Uli SDK utilizes Google’s highly efficient build
 
 ### **Highlights**
 
-1. **Agentic AI Interoperability** enabling autonomous agents to reason across diverse hardware fleets.
+1. **Dynamic and Self-Configuring Infrastructure:** A runtime-adaptive backbone for the seamless integration and orchestration of assets across multi-dimensional operating domains.
 
-2. **A2UI (Agent-to-UI) Framework** native Dart-FFI integration, enabling AI agents to drive real-time, high fidelity user interfaces directly from telemetry streams.  
-     
-3. **Dynamic and Self-Configuring** infrastructure for integrating robotic assets.  
-     
-4. **Modular Open System Approach (MOSA)** provides interoperability and flexibility of the system architecture.
+2. **Unified Discovery Services:** Standardized interfaces for the real-time discovery of robotic assets, their functional capability context, and deep telemetry semantics.
 
-5. **Enhance LLM’s situation awareness** from the connected ecosystem to power its cognitive reasoning and acting cycle.  
-     
-6. **Certificate-based client** authentication and authorization.
+   
 
-7. **Exclusive control** **authorization** of agents, categorized into Operator, Maintainer, and Administrator.  
-     
-8. **Data access authorization** categorizes into classified, controlled, and unclassified tiers.
+3. **Knowledge Graph Synthesis:** Automated ingestion of discovered Asset, Capability, and Telemetry contexts into a structured Knowledge Graph to support advanced AI reasoning.
 
-9. **Lifecycle management** of the safety-critical applications, including startup, runtime, and shutdown phases.
+   
 
-10. **Service health reporting and monitoring** to track application status.
+4. **Python Bindings:** Straightforward integration of ROS, simulations, and machine learning modules, bridging the gap between high-level AI research and physical deployment.
 
-11. **Emergency stop (e-stop) propagation** to allow applications to manage critical situations.
+   
 
-12. **Support for various operating modes**, including Standard, Reduced, Training, Maintenance, and user-defined modes.  
-      
-13. **Code generation tools** that produce C++ code for record structures, messages, services, applications, and Python bindings.
+5. **Comprehensive Asset State Management:** Granular control over operational states including Initializing, Operational, Emergency, Pause, Shutdown, and Render Useless.
 
-14. **Cross-build support** for x86\_64, NVIDIA Jetson Nano, Xavier, and Orin, as well as multiple Ubuntu versions (18.04 \- 24.04, Jetpack 4.6, 5.1, 6.2).
+   
+
+6. **Safety-Critical Lifecycle Coordination:** Automated management of functional module lifecycles synchronized with asset operational states.
+
+   
+
+7. **Proactive Health Monitoring:** Real-time application status tracking and health reporting to enforce asset safety by triggering coordinated emergency transitions.
+
+   
+
+8. **Redundant Emergency Propagation:** Multi-path E-Stop propagation architecture to mitigate single-point failures.
+
+   
+
+9. **Versatile Operating Modes:** Built-in support for Standard, Reduced, Training, and Maintenance modes.
+
+   
+
+10. **Zero-Trust Security Model:** Robust certificate-based client authentication and authorization for all system interactions.
+
+    
+
+11. **Tiered Access Governance:** Granular authorization for functional capabilities (Operator/Maintainer) and telemetry data (Classified/Controlled/Unclassified).
+
+    
+
+12. **Native A2UI Integration:** High-performance Dart-FFI bindings for direct integration with Flutter, enabling AI-driven 3D drawings and media displays.  
+    
 
     ### **Advantages**
 
 Uli SDK is engineered to deliver a decisive edge in adaptability, interoperability, and operational integrity. Its architecture provides the following key advantages:
 
-* **Knowledge Graph-driven Context Layer**
+* **Autonomous Agent Interoperability:** Enables AI agents to reason across diverse hardware fleets through unified discovery and dynamic tool configuration.
 
 
-Synthesis of the discovered Asset Context, Capability Context, and Telemetry Context into Knowledge Graph for semantic retrieval.
+* **Semantic Knowledge Retrieval:** Provides a "Context Layer" that allows AI agents to perform semantic retrieval from the Knowledge Graph to ground decision-making.
 
-* **Self-Configuring and Adaptable Infrastructure**
 
-Its dynamic, self-configuring infrastructure allows capabilities to be seamlessly added or removed, ensuring the system can rapidly evolve to meet new mission requirements.
+* **Enhanced Situational Awareness:** Powers the AI cognitive "reasoning and acting" cycle by feeding agents with the complete discovered context.
 
-* **Unified Discovery and Access**
 
-A set of unified interfaces provides a consistent method for discovering and accessing the robotic assets and their functional capabilities and telemetry, dramatically accelerating development and integration.
+* **High-Level State Estimation:** Allows agents to reason over live telemetry semantics to maintain an accurate world model of physical status and operational health.
 
-* **Robust Security**
 
-A robust, certificate-based authentication and authorization model enforces distinct permissions for data and control access to prevent misuse and protect critical assets.
+* **Accelerated A2UI Development:** The native Dart-FFI framework enables AI agents to drive real-time user interfaces directly from live telemetry.
 
-* **Integrated Safety**
+* **MOSA-Compliant Flexibility:** Adopts the Modular Open Systems Approach to ensure long-term interoperability and the elimination of vendor lock-in.
 
-The integrated safety framework provides proactive monitoring of operator-initiated e-stop events and the health of critical applications to ensure a decisive response to emergencies. 
 
-* **Assured Reliability**
+* **Streamlined AI Workflow:** Integrated Python bindings facilitate immediate connection with ROS and advanced machine learning modules.
 
-A hierarchical state management system, combined with distinct operating modes, provides granular control over application functions to ensure predictable and reliable system behavior.
 
-* **High Quality**
+* **High Quality:** Quality assurance is embedded throughout the development lifecycle, with continuous review and validation to ensure objectives are met.
 
-Quality assurance is embedded throughout the development lifecycle, with continuous review and validation to ensure objectives are met.
 
-* **Cost Effectiveness**
-
-The SDK is delivered as open-source for licensed customers, offering full transparency and eliminating vendor lock-in to provide a low total cost of ownership.
+* **Cost Effectiveness:** The Uli SDK is delivered as open-source for licensed customers, offering full transparency and eliminating vendor lock-in to provide a low total cost of ownership
 
 Visit our website: [www.ulisdk.com](http://www.ulisdk.com)
-

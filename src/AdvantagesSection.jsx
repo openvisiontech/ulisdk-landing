@@ -4,33 +4,33 @@ import { Waypoints, Settings, Search, ShieldCheck, HeartPulse, Activity, Award, 
 
 const advantagesData = [
     {
-        title: "Knowledge Graph-driven Context Layer",
-        desc: "Synthesis of the discovered Asset Context, Capability Context, and Telemetry Context into Knowledge Graph for semantic retrieval.",
+        title: "Autonomous Agent Interoperability",
+        desc: "Enables AI agents to reason across diverse hardware fleets through unified discovery and dynamic tool configuration.",
         icon: <Waypoints className="text-secondary w-6 h-6" />
     },
     {
-        title: "Self-Configuring & Adaptable Infrastructure",
-        desc: "Its dynamic, self-configuring infrastructure allows capabilities to be seamlessly added or removed, ensuring the system can rapidly evolve to meet new mission requirements.",
+        title: "Semantic Knowledge Retrieval",
+        desc: "Provides a Context Layer that allows AI agents to perform semantic retrieval from the Knowledge Graph to ground decision-making.",
         icon: <Settings className="text-secondary w-6 h-6" />
     },
     {
-        title: "Unified Discovery and Access",
-        desc: "A set of unified interfaces provides a consistent method for discovering and accessing the robotic assets and their functional capabilities and telemetry, dramatically accelerating development and integration.",
+        title: "Enhanced Situational Awareness",
+        desc: "Powers the AI cognitive 'reasoning and acting' cycle by feeding agents with the complete discovered context.",
         icon: <Search className="text-secondary w-6 h-6" />
     },
     {
-        title: "Robust Security",
-        desc: "A robust, certificate-based authentication and authorization model enforces distinct permissions for data and control access to prevent misuse and protect critical assets.",
+        title: "High-Level State Estimation",
+        desc: "Allows agents to reason over live telemetry semantics to maintain an accurate world model of physical status and operational health.",
         icon: <ShieldCheck className="text-secondary w-6 h-6" />
     },
     {
-        title: "Integrated Safety",
-        desc: "The integrated safety framework provides proactive monitoring of operator-initiated e-stop events and the health of critical applications to ensure a decisive response to emergencies.",
+        title: "Accelerated A2UI Development",
+        desc: "The native Dart-FFI framework enables AI agents to drive real-time user interfaces directly from live telemetry.",
         icon: <HeartPulse className="text-secondary w-6 h-6" />
     },
     {
-        title: "Assured Reliability",
-        desc: "A hierarchical state management system, combined with distinct operating modes, provides granular control over application functions to ensure predictable and reliable system behavior.",
+        title: "MOSA-Compliant Flexibility",
+        desc: "Adopts the Modular Open Systems Approach to ensure long-term interoperability and the elimination of vendor lock-in.",
         icon: <Activity className="text-secondary w-6 h-6" />
     },
     {

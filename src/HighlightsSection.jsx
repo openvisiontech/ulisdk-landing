@@ -3,19 +3,19 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, Star } from 'lucide-react';
 
 const highlightsData = [
-    { title: "Agentic AI Interoperability", desc: "enabling autonomous agents to reason across diverse hardware fleets." },
-    { title: "A2UI (Agent-to-UI) Framework", desc: "native Dart-FFI integration, enabling AI agents to drive real-time, high fidelity user interfaces directly from telemetry streams." },
-    { title: "Dynamic and Self-Configuring", desc: "infrastructure for integrating robotic assets." },
-    { title: "Modular Open System Approach (MOSA)", desc: "provides interoperability and flexibility of the system architecture." },
-    { title: "Enhance LLM’s situation awareness", desc: "from the connected ecosystem to power its cognitive reasoning and acting cycle." },
-    { title: "Certificate-based client", desc: "authentication and authorization." },
-    { title: "Exclusive control authorization", desc: "of agents, categorized into Operator, Maintainer, and Administrator." },
-    { title: "Data access authorization", desc: "categorizes into classified, controlled, and unclassified tiers." },
-    { title: "Lifecycle management", desc: "of the safety-critical applications, including startup, runtime, and shutdown phases." },
-    { title: "Service health reporting and monitoring", desc: "to track application status." },
-    { title: "Emergency stop (e-stop) propagation", desc: "to allow applications to manage critical situations." },
-    { title: "Support for various operating modes", desc: "including Standard, Reduced, Training, Maintenance, and user-defined modes." },
-    { title: "Code generation tools", desc: "that produce C++ code for record structures, messages, services, applications, and Python bindings." },
+    { title: "Dynamic and Self-Configuring Infrastructure", desc: "A runtime-adaptive backbone for the seamless integration and orchestration of assets across multi-dimensional operating domains." },
+    { title: "Unified Discovery Services", desc: "Standardized interfaces for the real-time discovery of robotic assets, their functional capability context, and deep telemetry semantics." },
+    { title: "Knowledge Graph Synthesis", desc: "Automated ingestion of discovered Asset, Capability, and Telemetry contexts into a structured Knowledge Graph to support advanced AI reasoning." },
+    { title: "Comprehensive Asset State Management", desc: "Granular control over operational states including Initializing, Operational, Emergency, Pause, Shutdown, and Render Useless." },
+    { title: "Safety-Critical Lifecycle Coordination", desc: "Automated management of functional module lifecycles synchronized with asset operational states." },
+    { title: "Proactive Health Monitoring", desc: "Real-time application status tracking and health reporting to enforce asset safety by triggering coordinated emergency transitions." },
+    { title: "Redundant Emergency Propagation", desc: "Multi-path E-Stop propagation architecture to mitigate single-point failures." },
+    { title: "Versatile Operating Modes", desc: "Built-in support for Standard, Reduced, Training, and Maintenance modes." },
+    { title: "Zero-Trust Security Model", desc: "Robust certificate-based client authentication and authorization for all system interactions." },
+    { title: "Tiered Access Governance", desc: "Granular authorization for functional capabilities (Operator/Maintainer) and telemetry data (Classified/Controlled/Unclassified)." },
+    { title: "Native A2UI Integration", desc: "High-performance Dart-FFI bindings for direct integration with Flutter, enabling AI-driven 3D drawings and media displays." },
+    { title: "Python Bindings", desc: "Straightforward integration of ROS, simulations, and machine learning modules, bridging the gap between high-level AI research and physical deployment." },
+    { title: "Code Generation Tools", desc: "that produce C++ code for record structures, messages, services, applications, and Python bindings." },
     { title: "Cross-build support", desc: "for x86_64, NVIDIA Jetson Nano, Xavier, and Orin, as well as multiple Ubuntu versions (18.04 - 24.04, Jetpack 4.6, 5.1, 6.2)." }
 ];
 
