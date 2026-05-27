@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Waypoints, Cpu, Zap, ChevronRight, FileText, X, Download, Network, Shield, AlertTriangle, Activity, Eye, ArrowLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import ArchitectureSection from './ArchitectureSection';
 import HighlightsSection from './HighlightsSection';
 import AdvantagesSection from './AdvantagesSection';
@@ -38,10 +39,11 @@ const Hero = () => {
 
   const handleViewDoc = async (docName) => {
     try {
-      const response = await fetch(`/${docName}`);
+      const cleanDocName = docName.replace(/^\//, '');
+      const response = await fetch(`/${cleanDocName}`);
       const text = await response.text();
       setDocContent(text);
-      setViewingDoc(docName);
+      setViewingDoc(cleanDocName);
     } catch (error) {
       console.error('Error loading document:', error);
       setDocContent('Error loading document content.');
@@ -77,7 +79,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-semibold mb-6"
         >
-          <Waypoints size={14} /> KNOWLEDGE GRAPH
+          <Waypoints size={14} /> KNOWLEDGE LAYERS
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -141,7 +143,7 @@ const Hero = () => {
                 </div>
                 <div className="flex gap-2">
                   <button
-                    onClick={() => handleViewDoc('introduction.md')}
+                    onClick={() => handleViewDoc('/introduction.md')}
                     className="p-2 text-gray-400 hover:text-primary hover:bg-primary/5 rounded-lg transition"
                     title="View Markdown"
                   >
@@ -170,7 +172,7 @@ const Hero = () => {
                 </div>
                 <div className="flex gap-2">
                   <button
-                    onClick={() => handleViewDoc('security_safety_reliability.md')}
+                    onClick={() => handleViewDoc('/security_safety_reliability.md')}
                     className="p-2 text-gray-400 hover:text-primary hover:bg-primary/5 rounded-lg transition"
                     title="View Markdown"
                   >
@@ -233,7 +235,7 @@ const Hero = () => {
 
             <div className="flex-1 overflow-y-auto p-6 md:p-10 bg-gray-50">
               <div className="max-w-3xl mx-auto prose prose-slate md:prose-lg lg:prose-xl prose-headings:text-primary prose-a:text-secondary hover:prose-a:text-secondary/80">
-                <ReactMarkdown>{docContent}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{docContent}</ReactMarkdown>
               </div>
             </div>
           </motion.div>

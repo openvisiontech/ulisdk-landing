@@ -6,7 +6,7 @@ At the core of the Uli SDK's architecture is a **dynamic**, **self-configuring**
 
 This powerful infrastructure extends beyond individual modules to connect disparate systems—including **drones**, **autonomous vehicles**, **robot arms**, **process tools**, **controllers**, **AI agents**, and **data viewers/loggers**—that have been integrated using the Uli SDK. The same unified interfaces are leveraged to allow for the dynamic discovery of these complete systems and their functional capabilities and telemetry. This architectural approach is what facilitates true interoperability, enabling seamless collaboration between assets across multiple operational domains.  
 
-![Alt text for screen readers](ConnectedAssets.svg "Multi-domain asset connectivity")
+![Alt text for screen readers](introduction/ConnectedAssets.svg "Multi-domain asset connectivity")
 
 To accelerate development and ensure mission-readiness, Uli SDK provides a comprehensive suite of production-ready functional modules. This includes foundational pillars for the **Infrastructure**, **Security**, **Safety**, and **Reliability**, which handle the most critical, non-negotiable aspects of robotic systems. In addition, the SDK offers application-level modules for **Operator Control**, **Data Viewing** and **Logging**, and **Agentic AI**, which can learn and act based on the context of the functional capabilities and telemetry exposed by the assets connected to the infrastructure.
 
@@ -14,7 +14,7 @@ The primary benefit of this modular, pre-built approach is that it empowers robo
 
 Here is the high-level view of the Uli SDK architecture:  
 
-![Alt text for screen readers](Architecture.svg "Uli SDK Architecture")
+![Alt text for screen readers](introduction/Architecture.svg "Uli SDK Architecture")
 
 By adhering to the Department of Defense (DoD) **Modular Open Systems Approach** (**MOSA**), the Uli SDK leverages these unified interfaces in concert with dynamic functional modules. This architecture is the foundation for seamless interoperability, enabling the rapid addition, removal, or reconfiguration of capabilities in response to evolving mission requirements. The result is a highly agile and adaptable system that is built for change.
 
@@ -30,7 +30,7 @@ Reliability in the Uli SDK is architected around a hierarchical state management
 
 The Uli SDK infrastructure organizes all computing resources into a clear hierarchical structure of subsystems, nodes, and components. A subsystem serves as a logical grouping of one or more nodes, where each node represents a physical or virtual computing device. In turn, each node hosts the components (applications) that provide services. All communication between these services is conducted through a robust, message-based interaction model. 
 
-![Alt text for screen readers](Infrastructure.svg "Infrastructure")
+![Alt text for screen readers](introduction/Infrastructure.svg "Infrastructure")
 
 To facilitate seamless communication, every entity within this hierarchy—subsystems, nodes, and components—is assigned a unique identifier. Messages are then addressed using a tuple in the format (Subsystem ID, Node ID, Comp ID), which precisely specifies both the source and destination. This ID assignment is performed dynamically, analogous to a DHCP server assigning IP addresses. The SDK’s Id Allocator service issues unique IDs to subsystems, and once a subsystem is registered, its internal Subsystem Manager service allocates unique IDs to the nodes within its domain.
 
@@ -42,7 +42,7 @@ This robust infrastructure provides the foundation for the system's actual funct
 
 Within the Uli SDK, a service is the fundamental building block of functionality. Each service's behavior and interface are formally defined by its input/output messages, its internal events, a governing state machine, and a set of configurable parameters. To promote modularity and organization, related services are logically grouped together into a higher-level structure known as a component.
 
-![Alt text for screen readers](Services.svg "Services")
+![Alt text for screen readers](introduction/Services.svg "Services")
 
 To ensure system-wide discoverability and observability, every component is required to implement two foundational services:
 
@@ -59,7 +59,7 @@ This agent-based architecture is particularly vital for integrating advanced AI 
 
 The unified workflow for accessing and controlling agents is outlined below.
 
-![Alt text for screen readers](AgentWorkFlow.svg "Agent Workflow")
+![Alt text for screen readers](introduction/AgentWorkFlow.svg "Agent Workflow")
 
 1) The client requests control (exclusive) of the subsystem.  
 2) The client discovers the authorized agents.  
@@ -76,7 +76,7 @@ To facilitate this dynamic interaction, the Uli SDK provides a **Data Topic Disc
 
 The unified workflow for discovering and accessing Data Topics is detailed below.
 
-![Alt text for screen readers](DataTopicWorkFlow.svg "Data Topic Workflow")
+![Alt text for screen readers](introduction/DataTopicWorkFlow.svg "Data Topic Workflow")
 
 1) The client requests data access (none-exclusive) to the subsystem.  
 2) The client discovers the authorized data topics.  
