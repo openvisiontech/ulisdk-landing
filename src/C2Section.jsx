@@ -32,8 +32,8 @@ const C2Section = () => {
             subtitle: "Agentic AI & A2UI Dashboards",
             icon: <Cpu className="w-8 h-8 text-green-400" />,
             role: "Semantic Reasoning & Flutter UI",
-            desc: "Powers local LLMs to perform semantic retrieval, live state estimation, and command execution, while driving real-time 2D/3D Flutter dashboards via native Dart-FFI.",
-            engineeringDetail: "Native Dart-FFI interface bridging bare-metal C++ telemetry to Flutter UI."
+            desc: "Powers local LLMs to perform semantic retrieval, live state estimation, and command execution, while driving real-time 2D/3D Flutter dashboards via A2UI protocol.",
+            engineeringDetail: "Direct integration with A2UI catalogs, ATAK map, and Flutter 2D/3D displays."
         }
     ];
 

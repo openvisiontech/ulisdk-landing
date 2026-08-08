@@ -30,11 +30,11 @@ const ArchitectureSection = () => {
                             <div className="grid grid-cols-1 gap-x-8 gap-y-3">
                                 <div className="flex flex-col sm:flex-row justify-between sm:items-center border-b border-gray-200 pb-2 gap-1 sm:gap-4">
                                     <span className="text-gray-500 font-mono text-[10px] whitespace-nowrap">Devices - X86_64</span>
-                                    <span className="text-primary font-mono text-[10px] font-bold text-left sm:text-right">Nvidia Jetson Nano, Xavier NX, Orin Nano, NX, AGX</span>
+                                    <span className="text-primary font-mono text-[10px] font-bold text-left sm:text-right">Nvidia Jetson Nano, Xavier NX, Orin Nano, NX, AGX, DGX</span>
                                 </div>
                                 <div className="flex flex-col sm:flex-row justify-between sm:items-center border-b border-gray-200 pb-2 gap-1 sm:gap-4">
                                     <span className="text-gray-500 font-mono text-[10px] whitespace-nowrap">Operating Systems</span>
-                                    <span className="text-primary font-mono text-[10px] font-bold text-left sm:text-right">Ubuntu 18.04 - 24.04, Nvidia Jetpack 4.6, 5.1, 6.2</span>
+                                    <span className="text-primary font-mono text-[10px] font-bold text-left sm:text-right">Ubuntu 18.04 - 24.04, Nvidia Jetpack 4.6, 5.1, 6.2, 7.1</span>
                                 </div>
                             </div>
                         </div>

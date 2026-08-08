@@ -135,9 +135,10 @@ Here are the Uli SDK supported OS and devices:
 
 | OS           | Device                        | Development Host (x86\_64) |
 | :----------- | :---------------------------- | :------------------------- |
-| Jetpack 4.6  | Jetson Nano, Jetson Xavier NX | Ubuntu 18.04               |
+| Jetpack 4.6  | Jetson Nano, Xavier NX        | Ubuntu 18.04               |
 | Jetpack 5.1  | Jetson Xavier NX, Jetson Orin | Ubuntu 20.04               |
-| Jetpack 6.2  | Jetson Orin Nano, AGX Orin    | Ubuntu 22.04               |
+| Jetpack 6.2  | Jetson Orin Nano/NX, AGX      | Ubuntu 22.04               |
+| Jetpack 7.1  | Jetson Orin Nano/NX, DGX      | Ubuntu 24.04               |
 | Ubuntu 18.04 | x86\_64                       | Ubuntu 18.04               |
 | Ubuntu 20.04 | x86\_64                       | Ubuntu 20.04               |
 | Ubuntu 22.04 | x86\_64                       | Ubuntu 22.04               |

@@ -93,17 +93,20 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
           className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
         >
-          The Uli SDK acts as high-performance middleware powering real-time tactical autonomy. Built with zero-copy Cap'n Proto serialization, high-speed telemetry streams, and automated context discovery feeding a live Knowledge Graph, Uli SDK seamlessly connects bare-metal robotic hardware and traditional robotics stacks directly to Agentic AI ecosystems.
+          The Uli SDK acts as high-performance middleware powering real-time tactical autonomy. Built with zero-copy messaging, peer-to-peer telemetry streams, Cursor-on-Target (CoT) sharing for situational awareness, and automated context discovery feeding a live Knowledge Graph, Uli SDK seamlessly connects robotic systems with Agentic AI ecosystems.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
           className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-10 text-xs font-mono text-cyan-300"
         >
           <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
-            <Cpu size={14} className="text-secondary" /> Cap'n Proto Serialization
+            <Cpu size={14} className="text-secondary" /> Ultra fast Zero-copy Messaging
           </span>
           <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
-            <Network size={14} className="text-secondary" /> High-Speed Telemetry Streams
+            <Network size={14} className="text-secondary" /> Peer-to-Peer Telemetry Streaming
+          </span>
+          <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
+            <Network size={14} className="text-secondary" /> Cursor-on-Target (CoT) Sharing
           </span>
           <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
             <Waypoints size={14} className="text-secondary" /> Automated Context Discovery & Knowledge Graph
