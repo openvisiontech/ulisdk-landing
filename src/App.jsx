@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Waypoints, Cpu, Zap, ChevronRight, FileText, X, Download, Network, Shield, AlertTriangle, Activity, Eye, ArrowLeft } from 'lucide-react';
+import { Waypoints, Cpu, Zap, ChevronRight, FileText, X, Download, Network, Shield, ShieldCheck, AlertTriangle, Activity, Eye, ArrowLeft, Radio } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import C2Section from './C2Section';
 import ArchitectureSection from './ArchitectureSection';
 import HighlightsSection from './HighlightsSection';
 import AdvantagesSection from './AdvantagesSection';
@@ -17,6 +18,7 @@ const Navbar = () => (
     <div className="hidden md:flex gap-8 text-sm font-medium text-gray-600">
       <a href="#hero" className="hover:text-secondary transition">^</a>
       <a href="#solutions" className="hover:text-secondary transition">Features</a>
+      <a href="#ngc2-architecture" className="hover:text-secondary transition">NGC2</a>
       <a href="#architecture" className="hover:text-secondary transition">Architecture</a>
       <a href="#highlights" className="hover:text-secondary transition">Highlights</a>
       <a href="#advantages" className="hover:text-secondary transition">Advantages</a>
@@ -77,22 +79,36 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-8 relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-semibold mb-6"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-mono font-semibold mb-6 tracking-wider uppercase"
         >
-          <Waypoints size={14} /> KNOWLEDGE LAYERS
+          <Zap size={14} /> High-Performance Middleware
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight max-w-4xl mx-auto leading-tight"
         >
-          The Robotic Nervous System <br /><span className="text-secondary">for Agentic AI</span>
+          Bridging Agentic AI with <br /><span className="text-secondary">Traditional Robotics Stacks</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-          className="text-xl text-gray-300 max-w-2xl mx-auto mb-10"
+          className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
         >
-          The Uli (Unified Link Interface) SDK is designed to bridge the gap between traditional infrastructures of robotic assets and modern Agentic AI ecosystems.
+          The Uli SDK acts as high-performance middleware powering real-time tactical autonomy. Built with zero-copy Cap'n Proto serialization, high-speed telemetry streams, and automated context discovery feeding a live Knowledge Graph, Uli SDK seamlessly connects bare-metal robotic hardware and traditional robotics stacks directly to Agentic AI ecosystems.
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
+          className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-10 text-xs font-mono text-cyan-300"
+        >
+          <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
+            <Cpu size={14} className="text-secondary" /> Cap'n Proto Serialization
+          </span>
+          <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
+            <Network size={14} className="text-secondary" /> High-Speed Telemetry Streams
+          </span>
+          <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
+            <Waypoints size={14} className="text-secondary" /> Automated Context Discovery & Knowledge Graph
+          </span>
+        </motion.div>
         <div className="flex flex-wrap justify-center gap-4">
           <a
             href="#architecture"
@@ -250,6 +266,7 @@ const Features = () => (
     <div className="max-w-7xl mx-auto px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {[
         { title: "Agile and Adaptable", desc: "Leveraging its DoD MOSA-compliant design with unified interfaces and dynamic modules, Uli SDK enables the seamless interoperability and rapid reconfiguration of capabilities, resulting in a highly agile system built for change.", icon: <Zap className="text-secondary" /> },
+        { title: "NGC2 Stack Alignment", desc: "Uli SDK aligns directly with the U.S. Army's Next Generation Command & Control (NGC2) full-stack architecture, serving as the software connective tissue across transport, edge compute, data fabric, and agentic application layers.", icon: <ShieldCheck className="text-secondary" /> },
         { title: "Contextual Knowledge Graph", desc: "Uli SDK enables assets to export contextual information, which is then synthesized into a Knowledge Graph for semantic retrieval.", icon: <Waypoints className="text-secondary" /> },
         { title: "A2UI (Agent-to-UI) Framework", desc: "Uli SDK features native Dart-FFI integration, creating a powerful A2UI framework. This enables AI agents to drive real-time, high-fidelity user interfaces directly from telemetry streams.", icon: <Cpu className="text-secondary" /> },
         { title: "Security", desc: "Uli SDK's security model uses certificate-based authentication and requires clients to make separate requests to gain explicit permissions for both data access (telemetry) and control access (functional capabilities).", icon: <Shield className="text-secondary" /> },
@@ -278,6 +295,7 @@ const App = () => (
     <Navbar />
     <Hero />
     <Features />
+    <C2Section />
     <ArchitectureSection />
     <HighlightsSection />
     <AdvantagesSection />
