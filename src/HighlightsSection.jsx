@@ -16,7 +16,7 @@ const highlightsData = [
     { title: "Native A2UI Integration", desc: "High-performance Dart-FFI bindings for direct integration with Flutter, enabling AI-driven 3D drawings and media displays." },
     { title: "Python Bindings", desc: "Straightforward integration of ROS, simulations, and machine learning modules, bridging the gap between high-level AI research and physical deployment." },
     { title: "Code Generation Tools", desc: "that produce C++ code for record structures, messages, services, applications, and Python bindings." },
-    { title: "Cross-build support", desc: "for x86_64, NVIDIA Jetson Nano, Xavier, and Orin, as well as multiple Ubuntu versions (18.04 - 24.04, Jetpack 4.6, 5.1, 6.2)." }
+    { title: "Cross-build support", desc: "for x86_64, NVIDIA Jetson Nano, Xavier, and Orin, as well as multiple Ubuntu versions (18.04 - 24.04, Jetpack 4.6, 5.1, 6.2, 7.1)." }
 ];
 
 const HighlightsSection = () => {

@@ -15,9 +15,9 @@ const C2Section = () => {
             layer: "Layer 2: Infrastructure Layer",
             subtitle: "Self-Configuring Runtime Middleware",
             icon: <Server className="w-8 h-8 text-cyan-400" />,
-            role: "Dynamic Discovery Engine",
-            desc: "Connects Agentic AI directly to ROS/ROS2 and traditional C++ robotics software. Features self-configuring discovery of Asset Context, Capability Context (Agent Skills), and Telemetry semantics.",
-            engineeringDetail: "Runtime-adaptive node configuration without hard-coded static configurations."
+            role: "Dynamic Interoperability & Discovery Engine",
+            desc: "Provides a self-configuring, runtime-adaptive backbone that connects heterogeneous assets across multiple domains. Delivers full message interoperability while driving dynamic discovery of Asset Context, Capability Context, and Telemetry semantics via unified interfaces.",
+            engineeringDetail: "Multi-Domain Asset Connectivity, Self-Configuring Infrastructure, Messaging Interoperability, Dynamic Discovery, and Cursor-on-Target Sharing."
         },
         {
             layer: "Layer 3: Data Fabric Layer",
