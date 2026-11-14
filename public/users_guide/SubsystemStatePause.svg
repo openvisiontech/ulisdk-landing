@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg version="1.1" viewBox="0 0 920 890" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients for OVT signature orange frame and light-blue inner panel -->
+    <linearGradient id="orange-frame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffb03a" />
+      <stop offset="50%" stop-color="#ff9900" />
+      <stop offset="100%" stop-color="#e08200" />
+    </linearGradient>
+
+    <linearGradient id="blue-panel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eaf3fb" />
+      <stop offset="100%" stop-color="#cfe2f3" />
+    </linearGradient>
+
+    <linearGradient id="bg-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+
+    <!-- Arrowhead markers -->
+    <marker id="arrow-primary" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0 0.5 L 9.5 4 L 0 7.5 L 1.8 4 Z" fill="#1e3a8a" />
+    </marker>
+
+    <marker id="arrow-broadcast" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0 0.5 L 9.5 4 L 0 7.5 L 1.8 4 Z" fill="#d97706" />
+    </marker>
+  </defs>
+  <!-- Main Diagram Container Card -->
+  <rect x="10" y="10" width="900" height="870" rx="14" fill="url(#bg-card)" stroke="#cbd5e1" stroke-width="1.5" />
+  <!-- Subtle Phase Background Bands -->
+  <rect x="28" y="114" width="864" height="376" rx="10" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="28" y="502" width="864" height="342" rx="10" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" />
+  <!-- Lifelines -->
+  <g stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,5">
+    <line x1="130.0" y1="94" x2="130.0" y2="862" />
+    <line x1="350.0" y1="94" x2="350.0" y2="862" />
+    <line x1="570.0" y1="94" x2="570.0" y2="862" />
+    <line x1="790.0" y1="94" x2="790.0" y2="862" />
+  </g>
+  <!-- Phase Header Badges -->
+  <g>
+    <rect x="38" y="122" width="377" height="20" rx="5" fill="#e2e8f0" />
+    <text x="48" y="136" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#475569" letter-spacing="0.5">PHASE 1: PAUSE CONDITION &amp; SUBSYSTEM PAUSE BROADCAST</text>
+    <rect x="38" y="510" width="370" height="20" rx="5" fill="#e2e8f0" />
+    <text x="48" y="524" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#475569" letter-spacing="0.5">PHASE 2: PAUSE CLEARED &amp; SUBSYSTEM RESUME BROADCAST</text>
+  </g>
+  <!-- Lifeline Bottom End Caps -->
+  <g fill="#64748b">
+    <rect x="114.0" y="860" width="32" height="5" rx="2.5" />
+    <rect x="334.0" y="860" width="32" height="5" rx="2.5" />
+    <rect x="554.0" y="860" width="32" height="5" rx="2.5" />
+    <rect x="774.0" y="860" width="32" height="5" rx="2.5" />
+  </g>
+  <!-- Activation Bars on Lifelines -->
+  <rect x="125.0" y="154" width="10" height="96" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2" />
+  <rect x="345.0" y="154" width="10" height="280" rx="3" fill="#ffedd5" stroke="#f59e0b" stroke-width="1.2" />
+  <rect x="565.0" y="270" width="10" height="68" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2" />
+  <rect x="785.0" y="154" width="10" height="322" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2" />
+  <rect x="125.0" y="540" width="10" height="290" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2" />
+  <rect x="345.0" y="590" width="10" height="198" rx="3" fill="#ffedd5" stroke="#f59e0b" stroke-width="1.2" />
+  <rect x="565.0" y="590" width="10" height="102" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2" />
+  <rect x="785.0" y="768" width="10" height="62" rx="3" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2" />
+  <!-- Actor Header Boxes -->
+  <g>
+    <rect x="47.0" y="33" width="170" height="64" rx="9" fill="#0f172a" fill-opacity="0.12" />
+    <rect x="45.0" y="30" width="170" height="64" rx="9" fill="url(#orange-frame)" stroke="#b45309" stroke-width="1.2" />
+    <rect x="53.0" y="37" width="154" height="50" rx="5" fill="url(#blue-panel)" stroke="#475569" stroke-width="1" />
+    <text x="130.0" y="67" font-family="Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Management 1</text>
+  </g>
+  <g>
+    <rect x="267.0" y="33" width="170" height="64" rx="9" fill="#0f172a" fill-opacity="0.12" />
+    <rect x="265.0" y="30" width="170" height="64" rx="9" fill="url(#orange-frame)" stroke="#b45309" stroke-width="1.2" />
+    <rect x="273.0" y="37" width="154" height="50" rx="5" fill="url(#blue-panel)" stroke="#475569" stroke-width="1" />
+    <text x="350.0" y="58" font-family="Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Subsystem</text>
+    <text x="350.0" y="75" font-family="Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0f172a" text-anchor="middle">State</text>
+  </g>
+  <g>
+    <rect x="487.0" y="33" width="170" height="64" rx="9" fill="#0f172a" fill-opacity="0.12" />
+    <rect x="485.0" y="30" width="170" height="64" rx="9" fill="url(#orange-frame)" stroke="#b45309" stroke-width="1.2" />
+    <rect x="493.0" y="37" width="154" height="50" rx="5" fill="url(#blue-panel)" stroke="#475569" stroke-width="1" />
+    <text x="570.0" y="67" font-family="Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Status Monitor</text>
+  </g>
+  <g>
+    <rect x="707.0" y="33" width="170" height="64" rx="9" fill="#0f172a" fill-opacity="0.12" />
+    <rect x="705.0" y="30" width="170" height="64" rx="9" fill="url(#orange-frame)" stroke="#b45309" stroke-width="1.2" />
+    <rect x="713.0" y="37" width="154" height="50" rx="5" fill="url(#blue-panel)" stroke="#475569" stroke-width="1" />
+    <text x="790.0" y="67" font-family="Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Management</text>
+  </g>
+  <!-- Sequence Elements -->
+  <g>
+    <rect x="84.0" y="154" width="92" height="20" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.2" />
+    <text x="130.0" y="168" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#166534" text-anchor="middle">READY</text>
+    <rect x="300.5" y="154" width="99" height="20" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.2" />
+    <text x="350.0" y="168" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#166534" text-anchor="middle">OPERATIONAL</text>
+    <rect x="744.0" y="154" width="92" height="20" rx="10" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2" />
+    <text x="790.0" y="168" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#334155" text-anchor="middle">STAND_BY</text>
+  </g>
+  <g>
+    <rect x="28.5" y="186" width="203" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" />
+    <text x="130.0" y="202" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#334155" text-anchor="middle">Check Pause Condition = true</text>
+  </g>
+  <g>
+    <rect x="84.0" y="228" width="92" height="20" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="130.0" y="242" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#92400e" text-anchor="middle">PAUSE</text>
+  </g>
+  <g>
+    <text x="460.0" y="270" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">Query Subsystem Management States</text>
+    <line x1="355.0" y1="280" x2="563.0" y2="280" stroke="#1e3a8a" stroke-width="2.2" marker-end="url(#arrow-primary)" />
+    <circle cx="355.0" cy="280" r="3.5" fill="#1e3a8a" />
+  </g>
+  <g>
+    <text x="460.0" y="318" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">Report Subsystem Management States</text>
+    <line x1="565.0" y1="328" x2="357.0" y2="328" stroke="#d97706" stroke-width="2.2" marker-end="url(#arrow-broadcast)" />
+    <circle cx="565.0" cy="328" r="3.5" fill="#d97706" />
+  </g>
+  <g>
+    <rect x="304.0" y="358" width="92" height="20" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="350.0" y="372" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#92400e" text-anchor="middle">PAUSE</text>
+  </g>
+  <g>
+    <text x="460.0" y="394" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">Subsystem Broadcast</text>
+    <rect x="406.0" y="399" width="108" height="18" rx="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="1" />
+    <text x="460.0" y="412" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#92400e" text-anchor="middle">(Pause)</text>
+    <line x1="355.0" y1="424" x2="783.0" y2="424" stroke="#d97706" stroke-width="2.2" marker-end="url(#arrow-broadcast)" />
+    <circle cx="355.0" cy="424" r="3.5" fill="#d97706" />
+  </g>
+  <g>
+    <rect x="744.0" y="454" width="92" height="20" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.2" />
+    <text x="790.0" y="468" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#92400e" text-anchor="middle">PAUSE</text>
+  </g>
+  <g>
+    <rect x="25.5" y="540" width="209" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" />
+    <text x="130.0" y="556" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#334155" text-anchor="middle">Check Pause Condition = false</text>
+  </g>
+  <g>
+    <text x="460.0" y="590" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">Query Subsystem Management States</text>
+    <line x1="355.0" y1="600" x2="563.0" y2="600" stroke="#1e3a8a" stroke-width="2.2" marker-end="url(#arrow-primary)" />
+    <circle cx="355.0" cy="600" r="3.5" fill="#1e3a8a" />
+  </g>
+  <g>
+    <rect x="84.0" y="630" width="92" height="20" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.2" />
+    <text x="130.0" y="644" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#166534" text-anchor="middle">CONTINUE</text>
+  </g>
+  <g>
+    <text x="460.0" y="672" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">Report Subsystem Management States</text>
+    <line x1="565.0" y1="682" x2="357.0" y2="682" stroke="#d97706" stroke-width="2.2" marker-end="url(#arrow-broadcast)" />
+    <circle cx="565.0" cy="682" r="3.5" fill="#d97706" />
+  </g>
+  <g>
+    <rect x="300.5" y="712" width="99" height="20" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.2" />
+    <text x="350.0" y="726" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#166534" text-anchor="middle">OPERATIONAL</text>
+  </g>
+  <g>
+    <text x="240.0" y="748" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">Subsystem Broadcast</text>
+    <rect x="186.0" y="753" width="108" height="18" rx="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="1" />
+    <text x="240.0" y="766" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#92400e" text-anchor="middle">(Resume)</text>
+    <text x="460.0" y="748" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">Subsystem Broadcast</text>
+    <rect x="406.0" y="753" width="108" height="18" rx="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="1" />
+    <text x="460.0" y="766" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#92400e" text-anchor="middle">(Resume)</text>
+    <line x1="345.0" y1="778" x2="137.0" y2="778" stroke="#d97706" stroke-width="2.2" marker-end="url(#arrow-broadcast)" />
+    <line x1="355.0" y1="778" x2="783.0" y2="778" stroke="#d97706" stroke-width="2.2" marker-end="url(#arrow-broadcast)" />
+    <circle cx="350.0" cy="778" r="4" fill="#d97706" />
+  </g>
+  <g>
+    <rect x="84.0" y="808" width="92" height="20" rx="10" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2" />
+    <text x="130.0" y="822" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#334155" text-anchor="middle">STAND_BY</text>
+    <rect x="744.0" y="808" width="92" height="20" rx="10" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2" />
+    <text x="790.0" y="822" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#334155" text-anchor="middle">STAND_BY</text>
+  </g>
+</svg>

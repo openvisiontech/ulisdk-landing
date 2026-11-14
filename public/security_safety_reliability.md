@@ -1,4 +1,14 @@
+This document is published by Open Vision Technology LLC.
 
+8 Thompson Pond Road, Stoneham, MA 02180, U.S.A.
+
+Tel: 339-293-2151
+
+Copyright 2026 by Open Vision Technology LLC.
+
+This document contains proprietary information protected by copyright. All rights reserved. No part of this document may be photocopied or reproduced without the prior written consent of Open Vision Technology LLC.
+
+##
 
 # **Security**
 

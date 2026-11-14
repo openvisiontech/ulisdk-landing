@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg version="1.1" viewBox="0 0 350 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <!-- Transitions -->
+  <!-- Initial State Indicator -->
+  <circle cx="175" cy="50" r="12" fill="#000000" />
+  <path d="M 175 62 L 175 100" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- A: NOT CONTROLLED -> UNDER CONTROL -->
+  <path d="M 135 140 L 135 250" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="120" y="195" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#000000" text-anchor="middle">A</text>
+
+  <!-- B: UNDER CONTROL -> NOT CONTROLLED -->
+  <path d="M 215 250 L 215 140" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="230" y="195" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#000000" text-anchor="middle">B</text>
+
+  <!-- C: UNDER CONTROL -> UNDER CONTROL (self-loop) -->
+  <path d="M 135 290 L 135 330 L 215 330 L 215 290" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="120" y="325" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#000000" text-anchor="middle">C</text>
+
+  <!-- Node 1: NOT CONTROLLED -->
+  <rect x="100" y="100" width="150" height="40" rx="20" fill="#ff9900" stroke="#000000" stroke-width="1" />
+  <rect x="104" y="103" width="142" height="34" rx="17" fill="#93c47d" stroke="#000000" stroke-width="1" />
+  <text x="175" y="124" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">NOT CONTROLLED</text>
+
+  <!-- Node 2: UNDER CONTROL -->
+  <rect x="100" y="250" width="150" height="40" rx="20" fill="#ff9900" stroke="#000000" stroke-width="1" />
+  <rect x="104" y="253" width="142" height="34" rx="17" fill="#93c47d" stroke="#000000" stroke-width="1" />
+  <text x="175" y="274" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">UNDER CONTROL</text>
+
+</svg>

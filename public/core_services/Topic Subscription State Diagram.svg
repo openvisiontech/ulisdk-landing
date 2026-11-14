@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg version="1.1" viewBox="0 0 350 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <!-- Initial State Indicator -->
+  <circle cx="160" cy="50" r="12" fill="#000000" />
+  <path d="M 160 62 L 160 100" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Transitions -->
+  <!-- A: READY -> READY (self-loop on bottom) -->
+  <path d="M 140 140 L 140 190 L 180 190 L 180 140" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="160" y="210" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#000000" text-anchor="middle">A</text>
+
+  <!-- Node: READY -->
+  <rect x="100" y="100" width="120" height="40" rx="20" fill="#ff9900" stroke="#000000" stroke-width="1" />
+  <rect x="104" y="103" width="112" height="34" rx="17" fill="#93c47d" stroke="#000000" stroke-width="1" />
+  <text x="160" y="124" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#000000" text-anchor="middle">READY</text>
+
+</svg>

@@ -1,310 +1,294 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Waypoints, Cpu, Zap, ChevronRight, FileText, X, Download, Network, Shield, ShieldCheck, AlertTriangle, Activity, Eye, ArrowLeft, Radio } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import C2Section from './C2Section';
+import {
+  Zap,
+  ChevronRight,
+  FileText
+} from 'lucide-react';
+import {
+  OneControllerArt,
+  SharedIntelligenceArt,
+  ControlHandoverArt,
+  PlugAndPlayArt,
+  AiTaskableArt,
+  FleetSafetyArt
+} from './HeroVectorArt';
+import BenefitsSection from './BenefitsSection';
 import ArchitectureSection from './ArchitectureSection';
-import HighlightsSection from './HighlightsSection';
-import AdvantagesSection from './AdvantagesSection';
+import DocsSection from './DocsSection';
 import ContactSection from './ContactSection';
 
-const Navbar = () => (
-  <nav className="flex items-center justify-between px-8 py-6 bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-    <div className="flex items-center gap-3">
-      <img src="/favicon.PNG" alt="Uli Logo" className="w-10 h-10 object-contain rounded-full" />
-      <span className="text-xl font-bold tracking-tight text-primary">Uli SDK</span>
-    </div>
-    <div className="hidden md:flex gap-8 text-sm font-medium text-gray-600">
-      <a href="#hero" className="hover:text-secondary transition">^</a>
-      <a href="#solutions" className="hover:text-secondary transition">Features</a>
-      <a href="#ngc2-architecture" className="hover:text-secondary transition">NGC2</a>
-      <a href="#architecture" className="hover:text-secondary transition">Architecture</a>
-      <a href="#highlights" className="hover:text-secondary transition">Highlights</a>
-      <a href="#advantages" className="hover:text-secondary transition">Advantages</a>
-    </div>
-    <a
-      href="https://www.ulikaya.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-accent hover:opacity-90 text-white px-5 py-2 rounded-full text-sm font-semibold transition shadow-[0_4px_15px_rgba(242,148,98,0.4)]"
-    >
-      Uli Kaya Robot
+const Navbar = ({ onOpenDoc }) => (
+  <nav className="flex items-center justify-between px-6 sm:px-8 py-5 bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+    <a href="#hero" className="flex items-center gap-3">
+      <img
+        src="/favicon.PNG"
+        alt="Uli Logo"
+        className="w-10 h-10 object-contain rounded-full"
+      />
+      <div>
+        <span className="text-xl font-bold tracking-tight text-primary block leading-none">
+          Uli SDK
+        </span>
+        <span className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">
+          Unified Link Interface
+        </span>
+      </div>
     </a>
+
+    <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
+      <a href="#benefits" className="hover:text-secondary transition">
+        Why Uli SDK
+      </a>
+      <a href="#capabilities" className="hover:text-secondary transition">
+        Capabilities
+      </a>
+      <a href="#architecture" className="hover:text-secondary transition">
+        Architecture
+      </a>
+      <a href="#docs" className="hover:text-secondary transition">
+        Tech Docs
+      </a>
+      <a href="#contact" className="hover:text-secondary transition">
+        Contact
+      </a>
+    </div>
+
+    <div className="flex items-center gap-3">
+      <button
+        onClick={() => onOpenDoc('introduction.md')}
+        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-primary bg-gray-100 hover:bg-secondary/10 hover:text-secondary border border-gray-200 transition cursor-pointer"
+      >
+        <FileText size={15} /> Tech Docs (7)
+      </button>
+    </div>
   </nav>
 );
 
-const Hero = () => {
-  const [showCoverPage, setShowCoverPage] = React.useState(false);
-  const [viewingDoc, setViewingDoc] = React.useState(null);
-  const [docContent, setDocContent] = React.useState('');
+const operationalBenefits = [
+  {
+    tag: 'Universal Command',
+    title: 'One Controller, Any Asset',
+    desc: 'A single operator unit dynamically discovers, configures, and commands any authorized drone, ground vehicle, robot arm, or process tool—no bespoke per-robot controller needed.',
+    art: <OneControllerArt />
+  },
+  {
+    tag: 'Multi-Domain Fusion',
+    title: 'Cross-Domain Intelligence Sharing',
+    desc: 'Air, ground, and industrial assets share live telemetry, video/audio streams, and Cursor-on-Target (When, Where, What) events with embedded images and 3D models.',
+    art: <SharedIntelligenceArt />
+  },
+  {
+    tag: 'Dynamic Authority',
+    title: 'Seamless Human ↔ AI Handover',
+    desc: 'Transfer exclusive mission control smoothly between field operators, remote stations, and autonomous AI agents—with instant authority-based preemption when priorities shift.',
+    art: <ControlHandoverArt />
+  },
+  {
+    tag: 'Zero-Config Mesh',
+    title: 'Plug-and-Play Fleet Expansion',
+    desc: 'Power on a new unmanned vehicle, tool, or AI node and it joins active operations automatically at runtime without static IP setup or network reconfiguration.',
+    art: <PlugAndPlayArt />
+  },
+  {
+    tag: 'Autonomous Teaming',
+    title: 'AI-Taskable Multi-Vendor Fleets',
+    desc: 'Every connected asset automatically describes its capabilities, readiness, and health status so AI agents can reason across the fleet, plan missions, and execute tasks.',
+    art: <AiTaskableArt />
+  },
+  {
+    tag: 'Operational Integrity',
+    title: 'Coordinated Fleet-Wide Safety & Trust',
+    desc: 'Tiered clearance keeps classified and controlled data segregated while redundant multi-path emergency (E-Stop) and health monitoring transition assets into a safe state.',
+    art: <FleetSafetyArt />
+  }
+];
 
-  const handleViewDoc = async (docName) => {
-    try {
-      const cleanDocName = docName.replace(/^\//, '');
-      const response = await fetch(`/${cleanDocName}`);
-      const text = await response.text();
-      setDocContent(text);
-      setViewingDoc(cleanDocName);
-    } catch (error) {
-      console.error('Error loading document:', error);
-      setDocContent('Error loading document content.');
-      setViewingDoc(docName);
-    }
-  };
-
-  const closeModals = () => {
-    setShowCoverPage(false);
-    setViewingDoc(null);
-    setDocContent('');
-  };
-
-  // Prevent scrolling when modal is open
-  React.useEffect(() => {
-    if (showCoverPage || viewingDoc) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [showCoverPage, viewingDoc]);
-
+const Hero = ({ onOpenDoc }) => {
   return (
-    <section id="hero" className="relative pt-20 pb-32 overflow-hidden bg-primary">
-      {/* Animated Background Pulse */}
+    <section id="hero" className="relative pt-16 pb-24 overflow-hidden bg-primary">
+      {/* Radial Background Highlight */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary/20 via-transparent to-transparent opacity-50 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-8 relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-mono font-semibold mb-6 tracking-wider uppercase"
-        >
-          <Zap size={14} /> High-Performance Middleware
-        </motion.div>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight max-w-4xl mx-auto leading-tight"
-        >
-          Bridging Agentic AI with <br /><span className="text-secondary">Traditional Robotics Stacks</span>
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
-        >
-          The Uli SDK acts as high-performance middleware powering real-time tactical autonomy. Built with zero-copy messaging, peer-to-peer telemetry streams, Cursor-on-Target (CoT) sharing for situational awareness, and automated context discovery feeding a live Knowledge Graph, Uli SDK seamlessly connects robotic systems with Agentic AI ecosystems.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
-          className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-10 text-xs font-mono text-cyan-300"
-        >
-          <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
-            <Cpu size={14} className="text-secondary" /> Ultra fast Zero-copy Messaging
-          </span>
-          <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
-            <Network size={14} className="text-secondary" /> Peer-to-Peer Telemetry Streaming
-          </span>
-          <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
-            <Network size={14} className="text-secondary" /> Cursor-on-Target (CoT) Sharing
-          </span>
-          <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center gap-1.5 text-gray-300">
-            <Waypoints size={14} className="text-secondary" /> Automated Context Discovery & Knowledge Graph
-          </span>
-        </motion.div>
-        <div className="flex flex-wrap justify-center gap-4">
-          <a
-            href="#architecture"
-            className="px-8 py-4 bg-accent text-white rounded-xl font-bold flex items-center gap-2 hover:scale-105 transition shadow-[0_4px_15px_rgba(242,148,98,0.4)]"
-          >
-            See Architecture <ChevronRight size={18} />
-          </a>
-          <button
-            onClick={() => setShowCoverPage(true)}
-            className="px-8 py-4 bg-white/10 text-white rounded-xl font-bold border border-white/20 hover:bg-white/20 transition cursor-pointer flex items-center gap-2">
-            <FileText size={18} /> View Tech Docs
-          </button>
-        </div>
-      </div>
-
-      {showCoverPage && !viewingDoc && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 backdrop-blur-sm p-4 md:p-8" onClick={closeModals}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+        {/* Top Headline & Mission Narrative */}
+        <div className="text-center max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="relative w-full max-w-md bg-white rounded-2xl overflow-hidden border border-gray-200 flex flex-col shadow-2xl p-6"
-            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/15 border border-secondary/30 text-secondary text-xs font-mono font-semibold mb-6 tracking-wider uppercase"
           >
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center gap-2 text-primary">
-                <FileText size={24} className="text-secondary" />
-                <h3 className="text-xl font-bold">Technical Documents</h3>
-              </div>
-              <button
-                onClick={closeModals}
-                className="text-gray-500 hover:text-primary transition p-2 hover:bg-gray-100 rounded-full"
-                aria-label="Close"
-              >
-                <X size={20} />
-              </button>
-            </div>
+            <Zap size={14} /> Unified Link Interface (Uli) SDK
+          </motion.div>
 
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-secondary/50 hover:bg-secondary/5 transition group">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/5 rounded-lg text-primary group-hover:bg-secondary/10 group-hover:text-secondary transition">
-                    <FileText size={20} />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="font-bold text-primary">Introduction</h4>
-                    <p className="text-xs text-gray-500">Technical Details</p>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => handleViewDoc('/introduction.md')}
-                    className="p-2 text-gray-400 hover:text-primary hover:bg-primary/5 rounded-lg transition"
-                    title="View Markdown"
-                  >
-                    <Eye size={18} />
-                  </button>
-                  <a
-                    href="/introduction.pdf"
-                    download
-                    className="p-2 text-gray-400 hover:text-secondary hover:bg-secondary/5 rounded-lg transition"
-                    title="Download PDF"
-                  >
-                    <Download size={18} />
-                  </a>
-                </div>
-              </div>
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight"
+          >
+            One Dynamic Network.
+            <br />
+            <span className="text-secondary">Every Asset Connected, Commandable &amp; Intelligent.</span>
+          </motion.h1>
 
-              <div className="flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-secondary/50 hover:bg-secondary/5 transition group">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/5 rounded-lg text-primary group-hover:bg-secondary/10 group-hover:text-secondary transition">
-                    <FileText size={20} />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="font-bold text-primary">Security, Safety, and Reliability</h4>
-                    <p className="text-xs text-gray-500">Technical Details</p>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => handleViewDoc('/security_safety_reliability.md')}
-                    className="p-2 text-gray-400 hover:text-primary hover:bg-primary/5 rounded-lg transition"
-                    title="View Markdown"
-                  >
-                    <Eye size={18} />
-                  </button>
-                  <a
-                    href="/security_safety_reliability.pdf"
-                    download
-                    className="p-2 text-gray-400 hover:text-secondary hover:bg-secondary/5 rounded-lg transition"
-                    title="Download PDF"
-                  >
-                    <Download size={18} />
-                  </a>
-                </div>
-              </div>
-            </div>
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.16 }}
+            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed"
+          >
+            When physical assets are built with Uli SDK, drones, ground vehicles, robot arms, process tools, operator controllers, and AI agents unite on a self-configuring infrastructure—enabling <strong className="text-white">one controller to operate any asset</strong>, <strong className="text-white">seamless human-to-AI control handover</strong>, and <strong className="text-white">real-time intelligence sharing across domains</strong>.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.22 }}
+            className="flex flex-wrap justify-center gap-4 mb-16"
+          >
+            <a
+              href="#contact"
+              className="px-7 py-3.5 bg-accent text-white rounded-xl font-bold flex items-center gap-2 hover:scale-105 transition shadow-[0_4px_15px_rgba(242,148,98,0.4)]"
+            >
+              Request SDK Access <ChevronRight size={18} />
+            </a>
+            <button
+              onClick={() => onOpenDoc('introduction.md')}
+              className="px-7 py-3.5 bg-secondary text-white rounded-xl font-bold hover:opacity-90 transition cursor-pointer flex items-center gap-2 shadow-lg"
+            >
+              <FileText size={18} /> Read Introduction &amp; Docs
+            </button>
+            <a
+              href="#architecture"
+              className="px-7 py-3.5 bg-white/10 text-white rounded-xl font-bold border border-white/20 hover:bg-white/20 transition flex items-center gap-2"
+            >
+              Explore Architecture
+            </a>
           </motion.div>
         </div>
-      )}
 
-      {viewingDoc && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 backdrop-blur-sm p-4 md:p-8" onClick={closeModals}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-2xl overflow-hidden border border-gray-200 flex flex-col shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex justify-between items-center z-10">
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => setViewingDoc(null)}
-                  className="flex items-center gap-2 text-gray-500 hover:text-primary transition font-medium"
-                >
-                  <ArrowLeft size={18} />
-                  Back
-                </button>
-                <div className="h-6 w-px bg-gray-200"></div>
-                <h3 className="text-xl font-bold text-primary">
-                  {viewingDoc === 'introduction.md' ? 'Introduction' : 'Security, Safety, and Reliability'}
+        {/* 6 Operational Benefit Cards with Custom Vector Art */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {operationalBenefits.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 + idx * 0.06 }}
+              className="group rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-secondary/60 hover:bg-white/[0.08] p-5 transition duration-300 flex flex-col justify-between shadow-xl"
+            >
+              <div>
+                {/* Vector Art Graphic Banner */}
+                <div className="mb-4 rounded-xl overflow-hidden border border-white/10 bg-slate-950/60 group-hover:border-secondary/40 transition">
+                  {item.art}
+                </div>
+
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-secondary">
+                    {item.tag}
+                  </span>
+                  <span className="text-[11px] font-mono text-gray-500 font-bold">
+                    0{idx + 1}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-secondary transition-colors">
+                  {item.title}
                 </h3>
+                <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
-              <div className="flex items-center gap-4">
-                <a
-                  href={`/${viewingDoc.replace('.md', '.pdf')}`}
-                  download
-                  className="flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary rounded-lg font-medium hover:bg-secondary/20 transition"
-                >
-                  <Download size={18} />
-                  <span className="hidden sm:inline">Download PDF</span>
-                </a>
-                <button
-                  onClick={closeModals}
-                  className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-            </div>
-
-            <div className="flex-1 overflow-y-auto p-6 md:p-10 bg-gray-50">
-              <div className="max-w-3xl mx-auto prose prose-slate md:prose-lg lg:prose-xl prose-headings:text-primary prose-a:text-secondary hover:prose-a:text-secondary/80">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{docContent}</ReactMarkdown>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
-      )}
+
+        {/* Multi-Domain Connected Assets Visual from introduction.md */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45 }}
+          className="max-w-5xl mx-auto"
+        >
+          <div className="rounded-3xl bg-white p-4 sm:p-6 md:p-8 shadow-2xl border border-white/20">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-gray-100">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-secondary">
+                Unified Multi-Domain Ecosystem
+              </span>
+              <span className="text-xs text-gray-500">
+                Drones • Ground Vehicles • Robot Arms • Process Tools • Controllers • AI Agents • Data Viewers
+              </span>
+            </div>
+            <img
+              src="/introduction/ConnectedAssets.svg"
+              alt="Multi-domain asset connectivity across Uli SDK"
+              className="w-full h-auto max-h-[420px] object-contain mx-auto"
+            />
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };
 
-const Features = () => (
-  <section id="solutions" className="py-24 bg-bg-light">
-    <div className="max-w-7xl mx-auto px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      {[
-        { title: "Agile and Adaptable", desc: "Leveraging its DoD MOSA-compliant design with unified interfaces and dynamic modules, Uli SDK enables the seamless interoperability and rapid reconfiguration of capabilities, resulting in a highly agile system built for change.", icon: <Zap className="text-secondary" /> },
-        { title: "NGC2 Stack Alignment", desc: "Uli SDK aligns directly with the U.S. Army's Next Generation Command & Control (NGC2) full-stack architecture, serving as the software connective tissue across transport, edge compute, data fabric, and agentic application layers.", icon: <ShieldCheck className="text-secondary" /> },
-        { title: "Contextual Knowledge Graph", desc: "Uli SDK enables assets to export contextual information, which is then synthesized into a Knowledge Graph for semantic retrieval.", icon: <Waypoints className="text-secondary" /> },
-        { title: "A2UI (Agent-to-UI) Framework", desc: "Uli SDK features native Flutter Dart integration, creating a powerful A2UI framework. This enables AI agents to drive real-time, high-fidelity user interfaces directly from telemetry streams.", icon: <Cpu className="text-secondary" /> },
-        { title: "Security", desc: "Uli SDK's security model uses certificate-based authentication and requires clients to make separate requests to gain explicit permissions for both data access (telemetry) and control access (functional capabilities).", icon: <Shield className="text-secondary" /> },
-        { title: "Safety", desc: "Uli SDK's safety approach combines proactive detection with decisive handling through a redundant triggering system, which automatically responds to application errors and manual e-stop commands by transitioning the entire system into a coordinated emergency state.", icon: <AlertTriangle className="text-secondary" /> },
-        { title: "Reliability", desc: "Uli SDK achieves reliability through a two-tiered state machine system that orchestrates both overall application and individual module behavior, combined with distinct operating modes that fine-tune functions for specific operational needs.", icon: <Activity className="text-secondary" /> },
-        { title: "Integration", desc: "Uli SDK automatically generates Python bindings and Dart-FFI for applications, facilitating seamless integration with the Physical AI, ROS, Simulations, AI Agents, A2UI, and machine learning modules.", icon: <Network className="text-secondary" /> }
-      ].map((f, i) => (
-        <div key={i} className="p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl border border-gray-100 hover:border-secondary/30 transition duration-300">
-          <div className="mb-4 text-3xl">{f.icon}</div>
-          <h3 className="text-xl font-bold text-primary mb-2">{f.title}</h3>
-          <p className="text-gray-600 leading-relaxed text-sm">{f.desc}</p>
-        </div>
-      ))}
+const Footer = ({ onOpenDoc }) => (
+  <footer className="py-12 bg-primary border-t border-white/10 text-gray-400 text-sm">
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="flex items-center gap-3">
+        <img
+          src="/favicon.PNG"
+          alt="Uli Logo"
+          className="w-7 h-7 object-contain rounded-full"
+        />
+        <p>© {new Date().getFullYear()} Open Vision Technology, LLC. All rights reserved.</p>
+      </div>
+      <div className="flex items-center gap-6 text-xs">
+        <button
+          onClick={() => onOpenDoc('introduction.md')}
+          className="hover:text-secondary transition cursor-pointer"
+        >
+          Introduction
+        </button>
+        <button
+          onClick={() => onOpenDoc('users_guide.md')}
+          className="hover:text-secondary transition cursor-pointer"
+        >
+          User&apos;s Guide
+        </button>
+        <button
+          onClick={() => onOpenDoc('security_safety_reliability.md')}
+          className="hover:text-secondary transition cursor-pointer"
+        >
+          Security &amp; Safety
+        </button>
+        <a href="#docs" className="hover:text-secondary transition">
+          All 7 Tech Docs
+        </a>
+      </div>
     </div>
-  </section>
-);
-
-const Footer = () => (
-  <footer className="py-12 bg-primary border-t border-white/5 text-center text-gray-400 text-sm">
-    <p>© {new Date().getFullYear()} Open Vision Technology, LLC. All rights reserved.</p>
   </footer>
 );
 
-const App = () => (
-  <div className="min-h-screen bg-bg-light font-sans selection:bg-secondary/30 text-primary">
-    <Navbar />
-    <Hero />
-    <Features />
-    <C2Section />
-    <ArchitectureSection />
-    <HighlightsSection />
-    <AdvantagesSection />
-    <ContactSection />
-    <Footer />
-  </div>
-);
+const App = () => {
+  const [activeDocFile, setActiveDocFile] = useState(null);
+
+  return (
+    <div className="min-h-screen bg-bg-light font-sans selection:bg-secondary/30 text-primary">
+      <Navbar onOpenDoc={setActiveDocFile} />
+      <Hero onOpenDoc={setActiveDocFile} />
+      <BenefitsSection onOpenDoc={setActiveDocFile} />
+      <ArchitectureSection />
+      <DocsSection
+        activeDocFile={activeDocFile}
+        onOpenDoc={setActiveDocFile}
+        onCloseDoc={() => setActiveDocFile(null)}
+      />
+      <ContactSection />
+      <Footer onOpenDoc={setActiveDocFile} />
+    </div>
+  );
+};
 
 export default App;

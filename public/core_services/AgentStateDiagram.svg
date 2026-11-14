@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg version="1.1" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <!-- Initial State Indicator (pointing to Management.READY/Exit=C) -->
+  <circle cx="360" cy="70" r="12" fill="#000000" />
+  <path d="M 360 82 L 360 140" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Transitions -->
+  <!-- A: DEFAULT -> DEFAULT (self-loop on bottom) -->
+  <path d="M 100 120 L 100 160 L 140 160 L 140 120" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="120" y="180" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#000000" text-anchor="middle">A</text>
+
+  <!-- B: Management.READY/Exit=C -> Management.READY/Exit=C (self-loop on bottom) -->
+  <path d="M 340 205 L 340 245 L 380 245 L 380 205" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="360" y="265" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#000000" text-anchor="middle">B</text>
+
+  <!-- Node 1: DEFAULT -->
+  <rect x="60" y="80" width="120" height="40" rx="20" fill="#ff9900" stroke="#000000" stroke-width="1" />
+  <rect x="64" y="83" width="112" height="34" rx="17" fill="#93c47d" stroke="#000000" stroke-width="1" />
+  <text x="120" y="104" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">DEFAULT</text>
+
+  <!-- Node 2: Management.READY/Exit=C -->
+  <rect x="280" y="140" width="160" height="65" rx="20" fill="#ff9900" stroke="#000000" stroke-width="1" />
+  <rect x="284" y="143" width="152" height="59" rx="17" fill="#93c47d" stroke="#000000" stroke-width="1" />
+  <text x="360" y="158" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">Management.</text>
+  <text x="360" y="174" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">READY/</text>
+  <text x="360" y="190" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle">Exit=C</text>
+
+</svg>
