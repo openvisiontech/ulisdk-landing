@@ -46,6 +46,8 @@ Here is the list of the core services:
 | [Agent Register](#agent-register) | Register agent to Agent Discovery service |
 | [Transform Reporter](#transform-reporter) | Provide frame transform information |
 | [Transform Reporter Discovery](#transform-reporter-discovery) | Store registered transform reports. |
+| [Event Monitor](#event-monitor) | Receive event messages from outside of the subsystem and forward them to all Event Subscriber services within the subsystem. |
+| [Event Subscriber](#event-subscriber) | Receive event messages forwarded by the Event Monitor service within the subsystem. |
 
 ##
 
@@ -2024,3 +2026,110 @@ Inherit from: none
 2) DATATIMEOUT	double, timeout in seconds for not receiving updates of registered transform reporters before expiring them, default=30.0.
 
 3) CHECKINTERVAL	double, time interval in seconds for checking registered transform reporters for timeout, default=5.0.
+
+##
+
+<a id="event-monitor"></a>
+# **Event Monitor** [⬆️](#service-summary "Service Summary")
+
+The Event Monitor service is in the same component as the Subsystem Manager service. Its role is to receive Event messages from outside of the subsystem and forward the received Event messages to all Event Subscriber services within the subsystem. To discover the Event Subscriber services in the subsystem, it periodically sends Query Subsystem Services messages to the Discovery service and receives Report Subsystem Services messages.
+
+Require: none  
+Inherit from: none
+
+## **Service Behavior**
+
+### **State Diagram**
+
+![Alt text for screen readers](core_services/EventMonitorStateDiagram.svg "Event Monitor State Diagram")
+
+### **State Actions**
+
+| State | Actions |
+| :---- | :---- |
+| READY | Periodically query subsystem services Receive Event messages from outside of the subsystem and forward them to all Event Subscriber services within the subsystem |
+
+### **Internal Events**
+
+| Event | Parameters | Purpose |
+| :---- | :---- | :---- |
+| ieReceiveMessage |  | Indicate a message is received |
+
+### **Transitions**
+
+| Transition | Trigger | Condition | Action |
+| :---- | :---- | :---- | :---- |
+| A | ieReceiveMessage |  | Process received message |
+
+## **Protocol**
+
+### **Incoming Message Set**
+
+| \# | ID | Message |
+| :---- | :---- | :---- |
+| 1 | H:0x00000001 L:0x00000164 | Event |
+| 2 | H:0x00000001 L:0x00000113 | Report Subsystem Services |
+
+### **Outgoing Message Set**
+
+| \# | ID | Message |
+| :---- | :---- | :---- |
+| 1 | H:0x00000001 L:0x00000164 | Event |
+| 2 | H:0x00000001 L:0x00000110 | Query Subsystem Services |
+
+## **Parameters**
+
+1) CYCLEINTERVAL	double, time interval in seconds of each cycle, default=0.1.  
+     
+2) QUERYSERVICESINTERVAL	double, time interval in seconds for sending Query Subsystem Services messages to the Discovery service to discover EventSubscriber services, default=5.0.
+
+##
+
+<a id="event-subscriber"></a>
+# **Event Subscriber** [⬆️](#service-summary "Service Summary")
+
+The Event Subscriber service receives Event messages forwarded by the Event Monitor service within the subsystem.
+
+Require: none  
+Inherit from: none
+
+## **Service Behavior**
+
+### **State Diagram**
+
+![Alt text for screen readers](core_services/EventSubscriberStateDiagram.svg "Event Subscriber State Diagram")
+
+### **State Actions**
+
+| State | Actions |
+| :---- | :---- |
+| READY | Receive Event messages forwarded by the Event Monitor service |
+
+### **Internal Events**
+
+| Event | Parameters | Purpose |
+| :---- | :---- | :---- |
+| ieReceiveMessage |  | Indicate a message is received |
+
+### **Transitions**
+
+| Transition | Trigger | Condition | Action |
+| :---- | :---- | :---- | :---- |
+| A | ieReceiveMessage |  | Process received message |
+
+## **Protocol**
+
+### **Incoming Message Set**
+
+| \# | ID | Message |
+| :---- | :---- | :---- |
+| 1 | H:0x00000001 L:0x00000164 | Event |
+
+### **Outgoing Message Set**
+
+| \# | ID | Message |
+| :---- | :---- | :---- |
+
+## **Parameters**
+
+1) CYCLEINTERVAL	double, time interval in seconds of each cycle, default=0.1.
