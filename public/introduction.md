@@ -161,7 +161,7 @@ Uli SDK automatically generates **Python** and **Dart-FFI** bindings, enabling r
 
 | OS | Target Device | Development Host (`x86_64`) |
 | :--- | :--- | :--- |
-| **JetPack 7.2** | NVIDIA Jetson Orin Nano/NX, DGX | Ubuntu 24.04 |
+| **JetPack 7.2** | NVIDIA Jetson Orin Nano/NX, Thor, DGX | Ubuntu 24.04 |
 | **JetPack 6.2** | NVIDIA Jetson Orin Nano/NX, AGX | Ubuntu 22.04 |
 | **Ubuntu 22.04 – 24.04** | `x86_64` | Ubuntu 22.04 – 24.04 |
 

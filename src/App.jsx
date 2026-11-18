@@ -18,7 +18,7 @@ import ArchitectureSection from './ArchitectureSection';
 import DocsSection from './DocsSection';
 import ContactSection from './ContactSection';
 
-const Navbar = ({ onOpenDoc }) => (
+const Navbar = () => (
   <nav className="flex items-center justify-between px-6 sm:px-8 py-5 bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
     <a href="#hero" className="flex items-center gap-3">
       <img
@@ -36,7 +36,7 @@ const Navbar = ({ onOpenDoc }) => (
       </div>
     </a>
 
-    <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
+    <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600 absolute left-1/2 -translate-x-1/2">
       <a href="#benefits" className="hover:text-secondary transition">
         Why Uli SDK
       </a>
@@ -52,15 +52,6 @@ const Navbar = ({ onOpenDoc }) => (
       <a href="#contact" className="hover:text-secondary transition">
         Contact
       </a>
-    </div>
-
-    <div className="flex items-center gap-3">
-      <button
-        onClick={() => onOpenDoc('introduction.md')}
-        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-primary bg-gray-100 hover:bg-secondary/10 hover:text-secondary border border-gray-200 transition cursor-pointer"
-      >
-        <FileText size={15} /> Tech Docs (7)
-      </button>
     </div>
   </nav>
 );
@@ -276,9 +267,9 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-bg-light font-sans selection:bg-secondary/30 text-primary">
-      <Navbar onOpenDoc={setActiveDocFile} />
+      <Navbar />
       <Hero onOpenDoc={setActiveDocFile} />
-      <BenefitsSection onOpenDoc={setActiveDocFile} />
+      <BenefitsSection />
       <ArchitectureSection />
       <DocsSection
         activeDocFile={activeDocFile}

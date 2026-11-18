@@ -13,8 +13,7 @@ import {
   Radio,
   AlertTriangle,
   Layers,
-  Code2,
-  ArrowUpRight
+  Code2
 } from 'lucide-react';
 
 const coreBenefits = [
@@ -123,7 +122,7 @@ const nineCapabilities = [
   }
 ];
 
-const BenefitsSection = ({ onOpenDoc }) => {
+const BenefitsSection = () => {
   return (
     <section id="benefits" className="py-24 bg-bg-light border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
@@ -197,15 +196,12 @@ const BenefitsSection = ({ onOpenDoc }) => {
           >
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono font-bold uppercase tracking-wider mb-3">
-                9 Architectural Pillars
+                Architectural Pillars
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-primary">
-                Nine Foundational Capabilities
+                Foundational Capabilities
               </h3>
             </div>
-            <p className="text-sm text-gray-600 max-w-md">
-              Every capability is encapsulated into modular, state-machine-driven services with unified interfaces across heterogeneous fleets.
-            </p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -235,19 +231,10 @@ const BenefitsSection = ({ onOpenDoc }) => {
                   <h4 className="text-base font-bold text-primary mb-2 group-hover:text-secondary transition-colors">
                     {cap.title}
                   </h4>
-                  <p className="text-xs text-gray-600 leading-relaxed mb-4">
+                  <p className="text-xs text-gray-600 leading-relaxed">
                     {cap.desc}
                   </p>
                 </div>
-
-                {onOpenDoc && (
-                  <button
-                    onClick={() => onOpenDoc(cap.docLink)}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-primary/70 hover:text-secondary transition mt-2 cursor-pointer w-fit"
-                  >
-                    Read specification <ArrowUpRight size={14} />
-                  </button>
-                )}
               </motion.div>
             ))}
           </div>

@@ -86,7 +86,7 @@ const diagramViews = [
 ];
 
 const platformSpecs = [
-  { os: 'JetPack 7.2', target: 'NVIDIA Jetson Orin Nano/NX, DGX', host: 'Ubuntu 24.04' },
+  { os: 'JetPack 7.2', target: 'NVIDIA Jetson Orin Nano/NX, Thor, DGX', host: 'Ubuntu 24.04' },
   { os: 'JetPack 6.2', target: 'NVIDIA Jetson Orin Nano/NX, AGX', host: 'Ubuntu 22.04' },
   { os: 'Ubuntu 22.04 – 24.04', target: 'x86_64 Systems', host: 'Ubuntu 22.04 – 24.04' }
 ];
