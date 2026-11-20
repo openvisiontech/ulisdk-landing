@@ -8,7 +8,6 @@ import {
   MessageSquare,
   Cpu,
   Terminal,
-  Download,
   X,
   ArrowUp
 } from 'lucide-react';
@@ -367,15 +366,6 @@ const DocsSection = ({ activeDocFile, onOpenDoc, onCloseDoc }) => {
                     </option>
                   ))}
                 </select>
-
-                <a
-                  href={`/${activeDocFile}`}
-                  download={activeDocFile}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-secondary/10 text-secondary rounded-lg text-xs sm:text-sm font-semibold hover:bg-secondary/20 transition"
-                >
-                  <Download size={16} />
-                  <span className="hidden sm:inline">Download</span>
-                </a>
 
                 <button
                   onClick={onCloseDoc}
